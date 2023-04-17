@@ -20,8 +20,8 @@ The live website can be found [here](#)
     * [Structure](#structure)
     * [Accessibility](#accessibility)
 * [Technologies](#technologies)
-    * [Languages Used](#languages-used)
-    * [Frameworks, Programs, Libraries and APIs used](#programs-libraries-frameworks-and-apis-used)
+    * [Languages Used](#languages)
+    * [Frameworks, Programs, Libraries and APIs used](#programs-libraries-frameworks-and-apis)
 * [Deployment & Development](#development-and-deployment)
     * [Local Development](#local-development)
     * [Online Development](#online-development)
@@ -164,3 +164,63 @@ All pages will be responsive, for use on Mobiles, Tablets and Desktops.
     - Password
     - Password confirmation
     - Submit button
+
+## Images
+
+Any images used for this project will be sourced from [Unsplash](https://unsplash.com/).
+They will also be related to the theme of the site, which is events.
+
+## Structure
+
+[//]: # (TODO: Add site structure)
+
+## Accessibility
+
+The site will be accessible to all users, regardless of disability.
+
+Any colors used will be checked to ensure they pass the WebAIM Contrast AAA standards.
+
+I'll also include the following:
+
+- Alt tags for images.
+- Aria labels where needed.
+- Semantic HTML.
+- Bootstraps visually hidden classes for elements are meant to only be seen by Screen Readers.
+
+# Technologies
+
+## Languages
+For this project, I will be using the following languages:
+- HTML
+- CSS
+- JavaScript
+- Python
+
+## Programs, Libraries, Frameworks and APIs
+During this project, I will use the following programs:
+- Git
+- GitHub
+- JetBrains PyCharm
+- Google Chrome
+- Google Chrome DevTools
+- Firefox
+
+I will use the following libraries and frameworks:
+- Bootstrap 5.2
+- Font Awesome Icons
+- Google Fonts
+- jQuery
+- Flask
+- Flask-Login
+- Flask-SQLAlchemy
+- Flask-Security
+
+I will not be using APIs for this project.
+
+The database I have chosen to use is PostgresSQL, which is a relational database.
+I will use both SQL and SQLAlchemy to interact with the database.
+
+These sites were also used:
+- Am I Responsive
+- Compressor.io
+
