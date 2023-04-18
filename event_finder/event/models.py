@@ -11,7 +11,7 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(50), unique=True, nullable=False)
     password = db.Column(db.String(255))
     admin = db.Column(db.Boolean, default=False)
-    profile_id = db.Column(db.Integer, db.ForeignKey("profile.id"), nullable=False)
+    profile = db.relationship('Profile', backref='user', uselist=False)
     events_created = db.relationship('Event', backref='creator', lazy='dynamic')
 
     def get_events_created(self):
@@ -25,7 +25,7 @@ class Profile(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
-    user_id = db.Column(db.String(36), db.ForeignKey("user.uuid"), nullable=False)
+    user_uuid = db.Column(db.String(36), db.ForeignKey("user.uuid"), unique=True)
 
 
 class Event(db.Model):
