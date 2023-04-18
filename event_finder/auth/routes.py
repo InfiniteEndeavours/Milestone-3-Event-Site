@@ -148,7 +148,7 @@ def logout():
         Logs out a user.
 
         Removes the session cookies and redirects to the login page.
-        """
+    """
     session.pop("user_uuid", None)
 
     if "admin" in session:
