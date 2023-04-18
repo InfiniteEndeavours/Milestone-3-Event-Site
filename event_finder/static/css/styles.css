@@ -29,6 +29,26 @@ body {
     color: #4C566A
 }
 
+.card {
+    background-color: #4C566A;
+    border: #2E3440 solid 1px;
+}
+
+.card-text {
+    font-family: 'Inter', sans-serif;
+}
+
+.card .btn {
+    background-color: #9ACBD6;
+    color: #4C566A;
+}
+
+.card .btn:hover {
+    background-color: #4C566A;
+    color: #9ACBD6;
+    border: 1px solid #9ACBD6;
+}
+
 /* --------------- Base Template --------------- */
 .navbar-brand,
 .navbar-nav > li > a {
@@ -53,7 +73,7 @@ body {
 
 footer {
     background-color: #4C566A;
-    position: absolute;
+    position: static;
     bottom: 0;
     width: 100%;
 }
