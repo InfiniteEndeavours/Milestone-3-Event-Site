@@ -83,3 +83,20 @@ footer li a {
     text-underline-offset: 4px;
     color: #9ACBD6;
 }
+
+/* --------------- Events Page --------------- */
+
+.pagination .page-link {
+  color: #c7cbcf;
+  background-color: #4C566A;
+  border-color: #4C566A;
+}
+
+.pagination .page-link:hover {
+  background-color: #4C566A;
+  border-color: #4C566A;
+}
+
+.pagination .page-link:focus {
+  box-shadow: 0 0 0 0.2rem rgba(199, 203, 207, 0.25);
+}
