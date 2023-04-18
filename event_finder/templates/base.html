@@ -13,7 +13,7 @@
     <!-- Custom CSS Link-->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 
-    <title>Event Haven - {{page_title}}</title>
+    <title>{% block title %} Event Haven {% endblock %}</title>
 </head>
 <body>
     <!-- Navbar   -->
