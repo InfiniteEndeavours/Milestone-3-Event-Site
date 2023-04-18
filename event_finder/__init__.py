@@ -1,7 +1,7 @@
 import os
 
 # Import Flask class from flask package with Blueprints
-from flask import Flask, Blueprint
+from flask import Flask, render_template
 # Import SQLAlchemy class from flask_sqlalchemy package
 from flask_sqlalchemy import SQLAlchemy
 
@@ -33,6 +33,15 @@ def fake_data():
     create_events(20)
     # Create 30 attendances
     create_attendances(30)
+
+
+@app.errorhandler(403)
+def forbidden(e):
+    return render_template("errors/403.html"), 404
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("errors/404.html"), 404
 
 
 def create_flask_app():
