@@ -30,4 +30,3 @@ def profile(uuid):
         abort(403)
         return redirect("error/403.html")
     return render_template("profile.html", user=user, profile=user_profile)
-
