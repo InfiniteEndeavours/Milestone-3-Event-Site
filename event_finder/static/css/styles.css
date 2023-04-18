@@ -19,6 +19,16 @@ body {
     color: #c7cbcf !important;
 }
 
+.btn {
+    background: #4C566A;
+    color: #9ACBD6;
+}
+
+.btn:hover {
+    background-color: #9ACBD6;
+    color: #4C566A
+}
+
 /* --------------- Base Template --------------- */
 .navbar-brand,
 .navbar-nav > li > a {
