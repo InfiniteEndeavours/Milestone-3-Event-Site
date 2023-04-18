@@ -127,7 +127,7 @@ def login():
                     session["admin"] = True
 
                 flash("You are now logged in.")
-                return redirect(url_for("event.index", user_id=user.id, page_title="Login"))
+                return redirect(url_for("event.index", page_title="Login"))
             else:
                 # If password doesn't match the password hash then redirect
                 flash("Incorrect Username/Password.")
