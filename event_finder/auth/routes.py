@@ -35,6 +35,21 @@ def validate_password(password, password_confirm):
 
 @auth.route("/register", methods=["GET", "POST"])
 def register():
+    """
+    Flask view function that handles requests to register a new user. It accepts both GET and POST requests to the
+    /register route.
+
+    When a POST request is received, it processes the user input from the registration form, validates the input,
+     creates a new user, and adds the user to the database.
+     It also creates a new profile for the user and sets a session cookie to log the user in.
+    If the request is a GET request, it simply renders the registration page.
+
+    Returns:
+        If the request is a GET request, returns the rendered "register.html" template.
+        If the request is a POST request and user input is valid, redirects to the index page.
+        If the request is a POST request and user input is invalid, redirects back to the registration
+         page and displays an error message.
+    """
     if request.method == "POST":
         # Store user input as variables
         username: str = request.form.get('username').lower()
@@ -97,7 +112,7 @@ def login():
 
         Returns:
             A rendered HTML template if a GET request is received, or a direct response if a POST request is received.
-        """
+    """
     if request.method == "POST":
         username: str = request.form.get('username').lower()
         password: str = request.form.get('password')
