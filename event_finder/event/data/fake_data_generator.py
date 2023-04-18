@@ -19,7 +19,6 @@ def create_users(num_users):
         db.session.commit()
 
 
-
 def create_events(num_events):
     for i in range(num_events):
         title = fake.sentence()
