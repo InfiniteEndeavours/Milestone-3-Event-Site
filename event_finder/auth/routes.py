@@ -148,8 +148,9 @@ def logout():
 
         Removes the session cookies and redirects to the login page.
     """
-    if "user_uuid" in session:
-        session.pop("user_uuid")
-        session.pop("admin")
+    if session.keys:
+        for key in list(session.keys()):
+            session.pop(key)
         flash("You have been logged out.")
+
     return redirect(url_for("auth.login"))
