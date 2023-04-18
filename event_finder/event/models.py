@@ -1,10 +1,9 @@
 from datetime import datetime, time
 from event_finder import db
 from uuid import uuid4
-from flask_login import UserMixin
 
 
-class User(UserMixin, db.Model):
+class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     # Generate a unique id for each user
     uuid = db.Column(db.String(36), unique=True, nullable=False, default=str(uuid4()))
@@ -13,12 +12,6 @@ class User(UserMixin, db.Model):
     admin = db.Column(db.Boolean, default=False)
     profile = db.relationship('Profile', backref='user', uselist=False)
     events_created = db.relationship('Event', backref='creator', lazy='dynamic')
-
-    def get_events_created(self):
-        return self.events_created.all()
-
-    def get_id(self):
-        return self.uuid
 
 
 class Profile(db.Model):
