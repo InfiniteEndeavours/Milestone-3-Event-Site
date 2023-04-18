@@ -85,3 +85,8 @@ def register():
         return redirect(url_for('event.index'))
 
     return render_template("register.html")
+
+
+@auth.route("/login")
+def login():
+    return render_template("login.html", page_title="Login")
