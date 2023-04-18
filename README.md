@@ -214,6 +214,7 @@ I will use the following libraries and frameworks:
 - Flask-Login
 - Flask-SQLAlchemy
 - Flask-Security
+- Faker (Fake data generation for testing)
 
 I will not be using APIs for this project.
 
