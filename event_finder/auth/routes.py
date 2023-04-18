@@ -87,6 +87,57 @@ def register():
     return render_template("register.html")
 
 
-@auth.route("/login")
+@auth.route("/login", methods=["GET", "POST"])
 def login():
-    return render_template("login.html", page_title="Login")
+    """
+        Logs in a user.
+
+        If a GET request is received, render the login form. If a POST request is received, validate user credentials
+        and log in the user if they are valid.
+
+        Returns:
+            A rendered HTML template if a GET request is received, or a direct response if a POST request is received.
+        """
+    if request.method == "POST":
+        username: str = request.form.get('username').lower()
+        password: str = request.form.get('password')
+
+        user = User.query.filter_by(username=username).first()
+
+        if user:
+            # Check if user inputted password matches hashed password in DB
+            if check_password_hash(user.password, password):
+                # Add uuid as a session cookie
+                session["user_uuid"] = user.uuid
+                if user.admin:
+                    session["admin"] = True
+
+                flash("You are now logged in.")
+                return redirect(url_for("event.index", user_id=user.id))
+            else:
+                # If password doesn't match the password hash then redirect
+                flash("Incorrect Username/Password.")
+                return redirect(url_for("auth.login"))
+        else:
+            # If username doesn't exist return to login page
+            flash("Incorrect Username/Password."
+                  "If you have forgotten your details, please register a new account.")
+            return render_template("login.html")
+
+    return render_template("login.html")
+
+
+@auth.route("/logout")
+def logout():
+    """
+        Logs out a user.
+
+        Removes the session cookies and redirects to the login page.
+        """
+    session.pop("user_uuid", None)
+
+    if "admin" in session:
+        session.pop("admin", None)
+
+    flash("You have been logged out.")
+    return redirect(url_for("auth.login"))
