@@ -62,22 +62,21 @@ def register():
         existing_user_check = User.query.filter_by(username=username).first()
         if existing_user_check:
             flash("Username already exists. Please try again.")
-            return redirect(url_for("auth.register"))
+            return redirect(url_for("auth.register", page_title="Register"))
 
         # Check if passwords match and are valid
         valid_password = validate_password(form_password, form_password_confirm)
-
         # Declare a variable to store the password hash
         password_hash = ""
 
         # If the password is not valid, flash an error message
         if valid_password == "no_match":
             flash("The passwords you entered do not match.")
-            return redirect(url_for('auth.register'))
+            return redirect(url_for('auth.register', page_title="Register"))
         elif valid_password == "not_complex_enough":
             flash("The password you have entered is not complex enough."
                   "It requires at least one uppercase, one lowercase, one digit and a special character.")
-            return redirect(url_for('auth.register'))
+            return redirect(url_for('auth.register', page_title="Register"))
         elif valid_password == "valid":
             # Generates a password hash using pbkdf2:sha256 algorithm, iterates 150000 times, salts with a length of 20
             password_hash = generate_password_hash(form_password, method='pbkdf2:sha256:150000', salt_length=20)
@@ -97,9 +96,9 @@ def register():
         session["user_uuid"] = registered_user.uuid
 
         # Redirect to the user's profile page
-        return redirect(url_for('event.index'))
+        return redirect(url_for('event.index', page_title="Register"))
 
-    return render_template("register.html")
+    return render_template("register.html", page_title="Register")
 
 
 @auth.route("/login", methods=["GET", "POST"])
@@ -128,18 +127,18 @@ def login():
                     session["admin"] = True
 
                 flash("You are now logged in.")
-                return redirect(url_for("event.index", user_id=user.id))
+                return redirect(url_for("event.index", user_id=user.id, page_title="Login"))
             else:
                 # If password doesn't match the password hash then redirect
                 flash("Incorrect Username/Password.")
-                return redirect(url_for("auth.login"))
+                return redirect(url_for("auth.login", page_title="Login"))
         else:
             # If username doesn't exist return to login page
             flash("Incorrect Username/Password."
                   "If you have forgotten your details, please register a new account.")
-            return render_template("login.html")
+            return render_template("login.html", page_title="Login")
 
-    return render_template("login.html")
+    return render_template("login.html", page_title="Login")
 
 
 @auth.route("/logout")
@@ -155,4 +154,4 @@ def logout():
         session.pop("admin", None)
 
     flash("You have been logged out.")
-    return redirect(url_for("auth.login"))
+    return redirect(url_for("auth.login", page_title="Login"))
