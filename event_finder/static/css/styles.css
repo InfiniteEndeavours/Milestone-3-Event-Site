@@ -30,6 +30,7 @@ body {
 }
 
 .card {
+    margin: 1.2rem 0;
     background-color: #4C566A;
     border: #2E3440 solid 1px;
 }
