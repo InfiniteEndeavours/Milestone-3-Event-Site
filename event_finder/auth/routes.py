@@ -98,7 +98,7 @@ def register():
         # Redirect to the user's profile page
         return redirect(url_for('event.index'))
 
-    return render_template("register.html")
+    return render_template("auth/register.html")
 
 
 @auth.route("/login", methods=["GET", "POST"])
@@ -136,9 +136,9 @@ def login():
             # If username doesn't exist return to login page
             flash("Incorrect Username/Password."
                   "If you have forgotten your details, please register a new account.")
-            return render_template("login.html")
+            return render_template("auth/login.html")
 
-    return render_template("login.html")
+    return render_template("auth/login.html")
 
 
 @auth.route("/logout")
