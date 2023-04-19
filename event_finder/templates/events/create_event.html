@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form method="POST" action="{{ url_for('event.create_event') }}">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="location" class="form-label">Location</label>
+                    <input type="text" class="form-control" id="location" name="location" required>
+                </div>
+                <div class="mb-3">
+                    <label for="date" class="form-label">Date</label>
+                    <input type="date" class="form-control" id="date" name="date" required>
+                </div>
+                <div class="mb-3">
+                    <label for="start_time" class="form-label">Start Time (24-hour format)</label>
+                    <input type="time" class="form-control" id="start_time" name="start_time" required>
+                </div>
+                <div class="mb-3">
+                    <label for="end_time" class="form-label">End Time (24-hour format)</label>
+                    <input type="time" class="form-control" id="end_time" name="end_time" required>
+                </div>
+                <button type="submit" class="btn mx-auto my-3">Submit</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

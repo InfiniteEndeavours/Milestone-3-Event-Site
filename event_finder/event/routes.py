@@ -19,6 +19,16 @@ def events():
     return render_template("events/events.html", events=event_list)
 
 
+@event.route("/events/create_event")
+def create_event():
+    user = User.query.filter_by(uuid=session.get("user_uuid")).first()
+    if not user:
+        flash("You must be logged in to create an event.")
+        abort(403)
+        return redirect("error/403.html")
+    return render_template("events/create_event.html")
+
+
 @event.route("/profile/<uuid>")
 def profile(uuid):
     user = User.query.filter_by(uuid=uuid).first()
