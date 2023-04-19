@@ -1,11 +1,14 @@
 {% extends "base.html" %}
+
+{% block title %}Event Haven - Create Event {% endblock %}
+
 {% block content %}
     <div class="row justify-content-center">
         <div class="col-md-6">
             <form method="POST" action="{{ url_for('event.create_event') }}">
                 <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" required>
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="title" name="title" required>
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
