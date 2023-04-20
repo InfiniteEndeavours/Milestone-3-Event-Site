@@ -1,4 +1,5 @@
 from datetime import datetime, time, timedelta
+from werkzeug.security import generate_password_hash
 from faker import Faker
 from event_finder import db
 from event_finder.event.models import User, Profile, Event, Attendance
@@ -12,7 +13,8 @@ def create_users(num_users):
         # Create a new profile for the user
         profile = Profile(first_name=fake.first_name(), last_name=fake.last_name())
         # Create a new user with the profile
-        user = User(username=fake.user_name(), password=fake.password(), uuid=str(uuid4()))  # type: ignore
+        user = User(username=fake.user_name(), password=generate_password_hash(fake.password()),
+                    uuid=str(uuid4()))  # type: ignore
         # Set the user attribute on the profile
         profile.user = user
         db.session.add(profile)
