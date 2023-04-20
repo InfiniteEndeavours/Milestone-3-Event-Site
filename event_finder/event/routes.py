@@ -19,6 +19,14 @@ def events():
     return render_template("events/events.html", events=event_list)
 
 
+@event.route("/events/<int:event_id>")
+def event_info(event_id):
+    event = Event.query.filter_by(id=event_id).first()
+    if not event:
+        abort(404)
+    return render_template("events/event_info.html", event=event)
+
+
 @event.route("/events/create_event", methods=["GET", "POST"])
 def create_event():
     user = User.query.filter_by(uuid=session.get("user_uuid")).first()
