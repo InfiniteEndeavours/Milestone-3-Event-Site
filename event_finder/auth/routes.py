@@ -17,10 +17,9 @@ def validate_password(password, password_confirm):
         password_confirm: String representing the user's password confirmation.
 
     Returns:
-        A string indicating the result of the validation. If the passwords match and meet
-        the required criteria, the function returns "valid". If the passwords do not match,
-        the function returns "no_match". If the password does not meet the
-        required criteria, the function returns "not_complex_enough".
+        - "valid" if the passwords match and also meet the criteria.
+        - "no_match" if the passwords do not match.
+        - "not_complex_enough" if the password does not feature special characters.
     """
     # Check if passwords match and are valid
     if password != password_confirm:
@@ -36,19 +35,19 @@ def validate_password(password, password_confirm):
 @auth.route("/register", methods=["GET", "POST"])
 def register():
     """
-    Flask view function that handles requests to register a new user. It accepts both GET and POST requests to the
-    /register route.
+    Route to handle requests to register a new user. Accepts both GET and POST requests.
+    
+    When POST request is recieved, it will process user input from the form and then validate the input.
+    When the input is determined to be valid, the user is created, assigned a session
+     cookie and returned to the profile page.
+     If the request is a GET request (page load), it will render the registration page.
 
-    When a POST request is received, it processes the user input from the registration form, validates the input,
-     creates a new user, and adds the user to the database.
-     It also creates a new profile for the user and sets a session cookie to log the user in.
-    If the request is a GET request, it simply renders the registration page.
-
-    Returns:
-        If the request is a GET request, returns the rendered "register.html" template.
-        If the request is a POST request and user input is valid, redirects to the index page.
-        If the request is a POST request and user input is invalid, redirects back to the registration
-         page and displays an error message.
+     Returns:
+        If the request is a GET request, returns the rendered version of "register.html" template.
+        If the request is a POST request and the user input is valid, then login,
+         assign session cookie and redirect to profile page.
+        If the request is a POST request and the user input is invalid, then redirect the user
+        to registration page and flash an error
     """
     if request.method == "POST":
         # Store user input as variables
