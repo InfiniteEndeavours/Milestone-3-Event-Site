@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, redirect, session, flash,
 from event_finder import db
 from datetime import datetime
 from event_finder.event.models import Event, User, Profile, Attendance
+from event_finder.event.helpers import db_find_first
 
 event = Blueprint("event", __name__, template_folder="../event_finder/templates")
 
@@ -21,7 +22,7 @@ def events():
 
 @event.route("/events/<int:event_id>")
 def event_info(event_id):
-    event = Event.query.filter_by(id=event_id).first()
+    event = db_find_first(Event, id=event_id)
     if not event:
         abort(404)
     return render_template("events/event_info.html", event=event)
@@ -29,7 +30,7 @@ def event_info(event_id):
 
 @event.route("/events/create_event", methods=["GET", "POST"])
 def create_event():
-    user = User.query.filter_by(uuid=session.get("user_uuid")).first()
+    user = db_find_first(User, uuid=session.get("user_uuid"))
     if not user:
         flash("You must be logged in to create an event.")
         abort(403)
@@ -61,7 +62,7 @@ def create_event():
 
 @event.route("/profile/<uuid>")
 def profile(uuid):
-    user = User.query.filter_by(uuid=uuid).first()
+    user = db_find_first(User, uuid=uuid)
     user_profile = Profile.query.filter_by(user_uuid=user.uuid).first()
     if not user:
         abort(404)
