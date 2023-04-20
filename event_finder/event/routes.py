@@ -22,10 +22,10 @@ def events():
 
 @event.route("/events/<int:event_id>")
 def event_info(event_id):
-    event = db_find_first(Event, id=event_id)
-    if not event:
+    event_data = db_find_first(Event, id=event_id)
+    if not event_data:
         abort(404)
-    return render_template("events/event_info.html", event=event)
+    return render_template("events/event_info.html", event=event_data)
 
 
 @event.route("/events/create_event", methods=["GET", "POST"])
