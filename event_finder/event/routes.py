@@ -94,8 +94,13 @@ def delete_event(event_id):
 def profile(uuid):
     user = db_find_first(User, uuid=uuid)
 
+    if uuid == "not_set":
+        flash("You must be logged in to view this page.")
+        return redirect(url_for("auth.login"))
+
     if not user:
         abort(404)
+
     if user.uuid != session.get("user_uuid"):
         flash("You do not have permission to view this profile.")
         abort(403)
