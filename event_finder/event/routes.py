@@ -16,7 +16,7 @@ def index():
 def events():
     page = request.args.get('page', 1, type=int)
     current_date = datetime.utcnow().date()
-    event_list = Event.query.filter(Event.date >= current_date).paginate(page=page, per_page=10)
+    event_list = Event.query.filter(Event.date >= current_date).order_by(Event.id).paginate(page=page, per_page=10)
     return render_template("events/events.html", events=event_list)
 
 
