@@ -60,6 +60,12 @@ def create_event():
     return render_template("events/create_event.html")
 
 
+@event.route("/events/<int:event_id>/edit_event")
+def edit_event(event_id):
+    event_to_edit = db_find_first(Event, id=event_id)
+    return render_template("events/edit_event.html", event=event_to_edit)
+
+
 @event.route("/profile/<uuid>")
 def profile(uuid):
     user = db_find_first(User, uuid=uuid)
