@@ -63,7 +63,8 @@ def create_event():
 @event.route("/events/<int:event_id>/edit_event")
 def edit_event(event_id):
     event_to_edit = db_find_first(Event, id=event_id)
-    return render_template("events/edit_event.html", event=event_to_edit)
+    event_date = event_to_edit.date.strftime("%Y-%m-%d")
+    return render_template("events/edit_event.html", event=event_to_edit, event_date=event_date)
 
 
 @event.route("/profile/<uuid>")
