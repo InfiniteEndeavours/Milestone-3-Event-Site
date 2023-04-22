@@ -60,10 +60,21 @@ def create_event():
     return render_template("events/create_event.html")
 
 
-@event.route("/events/<int:event_id>/edit_event")
+@event.route("/events/<int:event_id>/edit_event", methods=["GET", "POST"])
 def edit_event(event_id):
     event_to_edit = db_find_first(Event, id=event_id)
     event_date = event_to_edit.date.strftime("%Y-%m-%d")
+    if request.method == "POST":
+        event_to_edit.title = request.form.get("title")
+        event_to_edit.description = request.form.get("description")
+        event_to_edit.location = request.form.get("location")
+        event_to_edit.date = request.form.get("date")
+        event_to_edit.start_time = request.form.get("start_time")
+        event_to_edit.end_time = request.form.get("end_time")
+        db.session.add(event_to_edit)
+        db.session.commit()
+        return redirect(url_for("event.events"))
+
     return render_template("events/edit_event.html", event=event_to_edit, event_date=event_date)
 
 
