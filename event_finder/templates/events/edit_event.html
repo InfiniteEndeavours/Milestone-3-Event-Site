@@ -5,7 +5,7 @@
 {% block content %}
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <form method="POST" action="#">
+            <form method="POST" action="{{ url_for('event.edit_event', event_id=event.id) }}">
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
                     <input type="text" class="form-control" id="title" name="title" value="{{ event.title }}" required>
