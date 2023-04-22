@@ -3,47 +3,47 @@
 {% block title %}Event Haven - Profile{% endblock %}
 
 {% block content %}
-        <div class="row">
-            <div class="col">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <i class="fas fa-user-circle fa-6x mb-3"></i>
-                        <h4 class="card-title">Username: {{ user.username }}</h4>
-                        <p class="card-text">Name: {{ profile.first_name }} {{ profile.last_name }}</p>
-                    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-body text-center">
+                    <i class="fas fa-user-circle fa-6x mb-3"></i>
+                    <h4 class="card-title">Username: {{ user.username }}</h4>
+                    <p class="card-text">Name: {{ profile.first_name }} {{ profile.last_name }}</p>
                 </div>
             </div>
-{#            <div class="col">#}
-{#                <div class="card">#}
-{#                    <div class="card-body">#}
-{#                        <h5 class="card-title">Attending Events</h5>#}
-{#                        <ul class="list-group">#}
-{#                            {% for event in attending_events %}#}
-{#                                <li class="list-group-item">#}
-{#                                    <a href="#">{{ event.name }}</a>#}
-{#                                    <br>#}
-{#                                    <small>{{ event.date.strftime('%A, %b %d, %Y') }} - {{ event.start_time }}</small>#}
-{#                                </li>#}
-{#                            {% endfor %}#}
-{#                        </ul>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{#            <div class="col">#}
-{#                <div class="card">#}
-{#                    <div class="card-body">#}
-{#                        <h5 class="card-title">Created Events</h5>#}
-{#                        <ul class="list-group">#}
-{#                            {% for event in created_events %}#}
-{#                                <li class="list-group-item">#}
-{#                                    <a href="#">{{ event.name }}</a>#}
-{#                                    <br>#}
-{#                                    <small>{{ event.date.strftime('%A, %b %d, %Y') }} - {{ event.start_time }}</small>#}
-{#                                </li>#}
-{#                            {% endfor %}#}
-{#                        </ul>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
         </div>
+        <div class="col">
+            {% for event in attending_events %}
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ event.title }}</h5>
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <small>{{ event.date.strftime('%A, %b %d, %Y') }} - {{ event.start_time }}</small>
+                                <br>
+                                <a href="{{ url_for('event.event_info', event_id=event.id) }} class=btn">View Event</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="col">
+            {% for event in created_events %}
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ event.title }}</h5>
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <small>{{ event.date.strftime('%A, %b %d, %Y') }} - {{ event.start_time }}</small>
+                                <br>
+                                <a href="{{ url_for('event.event_info', event_id=event.id) }} class=btn">View Event</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
