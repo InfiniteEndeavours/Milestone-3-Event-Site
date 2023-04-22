@@ -3,13 +3,17 @@ from event_finder import db
 from datetime import datetime
 from event_finder.event.models import Event, User, Profile, Attendance
 from event_finder.event.helpers import db_find_first
+import random
 
 event = Blueprint("event", __name__, template_folder="../event_finder/templates")
 
 
 @event.route("/")
 def index():
-    return render_template("base.html")
+    current_events = list(Event.query.filter(Event.date >= datetime.utcnow()).all())
+    event_one = current_events[random.randint(0, len(current_events) - 1)]
+    event_two = current_events[random.randint(0, len(current_events) - 1)]
+    return render_template("index.html", event_one=event_one, event_two=event_two)
 
 
 @event.route("/events")

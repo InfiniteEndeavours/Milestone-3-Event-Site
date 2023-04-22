@@ -85,19 +85,43 @@ footer li a {
     color: #9ACBD6;
 }
 
+/* --------------- Home Page --------------- */
+
+#image-div {
+    height: 30rem;
+    overflow: hidden;
+    position: relative;
+    background: url("../imgs/warren-wong-star-gazing.jpg") center center / cover no-repeat fixed;
+    width: 100%;
+    color: white;
+}
+
+#section-content {
+    max-width: 25rem;
+    text-align: left;
+}
+
+#card-section {
+    margin: 3rem auto;
+}
+
+#card-section h1 {
+    margin: 3rem;
+}
+
 /* --------------- Events Page --------------- */
 
 .pagination .page-link {
-  color: #c7cbcf;
-  background-color: #4C566A;
-  border-color: #4C566A;
+    color: #c7cbcf;
+    background-color: #4C566A;
+    border-color: #4C566A;
 }
 
 .pagination .page-link:hover {
-  background-color: #4C566A;
-  border-color: #4C566A;
+    background-color: #4C566A;
+    border-color: #4C566A;
 }
 
 .pagination .page-link:focus {
-  box-shadow: 0 0 0 0.2rem rgba(199, 203, 207, 0.25);
+    box-shadow: 0 0 0 0.2rem rgba(199, 203, 207, 0.25);
 }
