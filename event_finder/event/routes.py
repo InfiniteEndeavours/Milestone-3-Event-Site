@@ -93,14 +93,6 @@ def delete_event(event_id):
 @event.route("/profile/<uuid>")
 def profile(uuid):
     user = db_find_first(User, uuid=uuid)
-    user_profile = Profile.query.filter_by(user_uuid=user.uuid).first()
-    page = request.args.get('page', 1, type=int)
-    events_created = Event.query.filter_by(creator_id=user.uuid) \
-        .order_by(Event.date)
-
-    events_attending = Event.query.join(Attendance) \
-        .filter_by(user_id=user.id) \
-        .order_by(Event.date)
 
     if not user:
         abort(404)
@@ -108,6 +100,15 @@ def profile(uuid):
         flash("You do not have permission to view this profile.")
         abort(403)
         return redirect("error/403.html")
+
+    user_profile = Profile.query.filter_by(user_uuid=user.uuid).first()
+
+    events_created = Event.query.filter_by(creator_id=user.uuid) \
+        .order_by(Event.date)
+
+    events_attending = Event.query.join(Attendance) \
+        .filter_by(user_id=user.id) \
+        .order_by(Event.date)
 
     return render_template("profile.html", user=user, profile=user_profile,
                            created_events=events_created, attending_events=events_attending)
