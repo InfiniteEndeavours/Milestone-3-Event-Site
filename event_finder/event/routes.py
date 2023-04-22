@@ -78,6 +78,14 @@ def edit_event(event_id):
     return render_template("events/edit_event.html", event=event_to_edit, event_date=event_date)
 
 
+@event.route("/events/<int:event_id>/delete")
+def delete_event(event_id):
+    event_to_delete = db_find_first(Event, id=event_id)
+    db.session.delete(event_to_delete)
+    db.session.commit()
+    return redirect(url_for("event.events"))
+
+
 @event.route("/profile/<uuid>")
 def profile(uuid):
     user = db_find_first(User, uuid=uuid)
