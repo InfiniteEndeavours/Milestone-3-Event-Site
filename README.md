@@ -190,14 +190,18 @@ I'll also include the following:
 # Technologies
 
 ## Languages
+
 For this project, I will be using the following languages:
+
 - HTML
 - CSS
 - JavaScript
 - Python
 
 ## Programs, Libraries, Frameworks and APIs
+
 During this project, I will use the following programs:
+
 - Git
 - GitHub
 - JetBrains PyCharm
@@ -206,22 +210,99 @@ During this project, I will use the following programs:
 - Firefox
 
 I will use the following libraries and frameworks:
+
 - Bootstrap 5.2
 - Font Awesome Icons
 - Google Fonts
-- jQuery
+- jQuery (Relied on by Bootstrap)
 - Flask
-- Flask-Login
-- Flask-SQLAlchemy
-- Flask-Security
 - Faker (Fake data generation for testing)
-
-I will not be using APIs for this project.
 
 The database I have chosen to use is PostgresSQL, which is a relational database.
 I will use both SQL and SQLAlchemy to interact with the database.
 
 These sites were also used:
+
 - Am I Responsive
 - Compressor.io
+
+# Development and Deployment
+
+For this project, I developed on my workstation using PyCharm.
+
+### Local Development
+
+Before being able to develop on my local machine, prerequisites needed to be met. These were:
+
+* Git - Installed via XCode CLI - Provides Version Control.
+* PyEnv - Installed via HomeBrew - Provides ability to manage Python Versions.
+* PyEnv Venv - Installed via HomeBrew - Provides ability to manage Virtual Environments through PyEnv.
+* Python 3.10 - Installed via PyEnv.
+* PostgreSQL@15 - Installed via HomeBrew and activated with HomeBrew services
+
+With these installed, I was able to begin local development, I performed this by:
+
+1. Opening Pycharm and creating a new Project.
+2. Initialising a new Git Repository.
+3. Logging into GitHub through PyCharm.
+4. Create initial commit and push the repository to GitHub.
+5. Add `env.py` to `.gitignore` to prevent Flask secret key and Database URI from being exposed to public.
+6. Add following to `env.py`:
+   ```python
+    import os
+
+    # Set IP for Flask Server - 0.0.0.0 uses all IPs on Device
+    os.environ.setdefault("IP", "0.0.0.0")
+    
+    # Set Port for Flask Server - 5000 is common but interferes with Airport on macOS
+    os.environ.setdefault("PORT", "5555")
+    
+    # Set Debug to True - Enables development server for Flask
+    os.environ.setdefault("DEBUG", "True")
+    
+    # Set SECRET_KEY for Flask Flashes
+    os.environ.setdefault("SECRET_KEY", "SECRET_KEY_VALUE")
+    # Generated using randomkeygen.com
+    
+    # Database Connection String
+    os.environ.setdefault("DB_URI", "postgresql://user:password@hostname/database_name")
+    # Obtained from ElephantSQL dashboard
+   ```
+
+7. Installing requirements in a Virtual Environment (Default with PyCharm).
+
+For Development, I used Google Chrome, FireFox and Polypane for testing.
+
+To fill my database with data so I could build web pages etc properly, I used Faker to create fake data.
+
+The data generator can be found at `event_finder/event/data/fake_data_generator.py`.
+
+This file was run after the database schema was created and only ran once at the start of the project.
+
+At time of deployment, the database had all tables dropped and recreated using SQLAlchemy.
+
+### Deployment
+
+I deployed this project on Heroku, with the use of ElephantSQL for database hosting. This was done by doing the
+following:
+
+#### ElephantSQL
+
+1. Logged into ElephantSQL via GitHub.
+2. Selected 'Create New Instance'.
+3. Named DB 'event_finder' and selected 'Tiny Turtle' plan.
+4. Selected Region.
+5. Confirm creation.
+
+#### Heroku
+
+1. Creating a file named 'Procfile' in the root of my project directory.
+2. Adding ` web: python app.py` to the 'Procfile'.
+3. Exporting requirements of app to a txt.
+    - This was done by running `pip3 freeze --local > requirements.txt` in the terminal.
+4. Creating a Heroku Account.
+5. Creating a new application, then naming it and selecting region.
+6. Followed [this document](https://devcenter.heroku.com/articles/github-integration).
+7. Enable Automatic Deploys on 'main' branch.
+8. Added the environment variables from local `env.py`file to the 'Config Vars' in Application settings.
 
