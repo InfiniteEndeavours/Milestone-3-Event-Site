@@ -92,10 +92,11 @@ As an event coordinator, want to be able to:
 ![Color-Palette](docs/images/color_palette.png)
 
 The palette I have chosen is based on the [Nord](https://www.nordtheme.com/docs/colors-and-palettes) palette.
-The base colours, `nord0` and `nord3` have not been modified and are to be used for styling the background of elements.
+The base colours, `#2e3440` and `#4C566A` have not been modified and are to be used for styling the background of
+elements.
 
-I have modified `nord7` and `nord8` to be slightly lighter to ensure they pass the WebAIM Contrast Checkers AAA
-standards.
+I have modified `#88C0D0` to be lighter to ensure it passes the WebAIM Contrast Checkers AAA
+standards. It's new value is `#A1D5E0`.
 
 I feel the Nord colour scheme is a very smooth palette, and doesn't create too much visual disturbance colour wise.
 
@@ -172,7 +173,8 @@ They will also be related to the theme of the site, which is events.
 
 ## Structure
 
-[//]: # (TODO: Add site structure)
+The structure for the site can be found [here](docs/wireframes/Wireframe.pdf). It's possible that this may
+change in future.
 
 ## Accessibility
 
@@ -273,7 +275,7 @@ With these installed, I was able to begin local development, I performed this by
 
 For Development, I used Google Chrome, FireFox and Polypane for testing.
 
-To fill my database with data so I could build web pages etc properly, I used Faker to create fake data.
+To fill my database with data, so I could build web pages etc. properly, I used Faker to create fake data.
 
 The data generator can be found at `event_finder/event/data/fake_data_generator.py`.
 
@@ -306,3 +308,7 @@ following:
 7. Enable Automatic Deploys on 'main' branch.
 8. Added the environment variables from local `env.py`file to the 'Config Vars' in Application settings.
 
+# Testing
+
+During the project, I have tested using Google Chrome, Firefox and Polypane. These helped me trouble shoot styling
+issues.
