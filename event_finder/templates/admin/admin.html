@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Admin</h1>
+        <hr>
+        <p>WARNING: Deleting an event will also delete all entries for the event in the attendance table!</p>
+        <hr>
+        <h2>Events</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Location</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for event in events %}
+                <tr>
+                    <td><a href="{{ url_for('event.event_info', event_id=event.id) }}">{{ event.title }}</a></td>
+                    <td>{{ event.date.strftime('%A, %b %d, %Y') }}</td>
+                    <td>{{ event.location }}</td>
+                    <td>{{ event.start_time }}</td>
+                    <td>{{ event.end_time }}</td>
+                    <td>
+                        <form action="{{ url_for('admin.delete_event', event_id=event.id) }}" method="POST">
+                            <button type="submit" class="btn">Delete Event</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
