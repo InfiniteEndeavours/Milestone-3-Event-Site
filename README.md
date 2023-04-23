@@ -271,7 +271,7 @@ With these installed, I was able to begin local development, I performed this by
     # Obtained from ElephantSQL dashboard
    ```
 
-7. Installing requirements in a Virtual Environment (Default with PyCharm).
+7. Installing [requirements](requirements.txt) in a Virtual Environment (Default with PyCharm).
 
 For Development, I used Google Chrome, FireFox and Polypane for testing.
 
