@@ -26,7 +26,8 @@ db = SQLAlchemy(app)
 
 
 def fake_data():
-    from event_finder.event.data.fake_data_generator import create_users, create_events, create_attendances
+    from event_finder.event.data.fake_data_generator import (
+        create_users, create_events, create_attendances)
     # Create 10 users
     create_users(10)
     # Create 20 events
@@ -49,7 +50,8 @@ def create_flask_app():
     """
         Creates a Flask application object.
 
-        This function creates a Flask application object, registers the auth and event blueprints,
+        This function creates a Flask application object,
+         registers the auth and event blueprints,
         and imports the models used in the application.
 
         Returns:
