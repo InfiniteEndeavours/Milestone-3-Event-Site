@@ -11,9 +11,12 @@ event = Blueprint("event", __name__, template_folder="../event_finder/templates"
 @event.route("/")
 def index():
     current_events = list(Event.query.filter(Event.date >= datetime.utcnow()).all())
-    event_one = current_events[random.randint(0, len(current_events) - 1)]
-    event_two = current_events[random.randint(0, len(current_events) - 1)]
-    return render_template("index.html", event_one=event_one, event_two=event_two)
+    if current_events:
+        event_one = current_events[random.randint(0, len(current_events) - 1)]
+        event_two = current_events[random.randint(0, len(current_events) - 1)]
+        return render_template("index.html", event_one=event_one, event_two=event_two)
+    return render_template("index.html")
+
 
 
 @event.route("/events")
