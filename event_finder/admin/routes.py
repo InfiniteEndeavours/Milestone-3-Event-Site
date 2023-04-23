@@ -1,9 +1,11 @@
-from flask import Blueprint, render_template, redirect, session, flash, url_for, abort
+from flask import (Blueprint, render_template, redirect,
+                   session, flash, url_for, abort)
 from event_finder import db
 from event_finder.event.models import Event, User, Attendance
 from event_finder.event.helpers import db_find_first
 
-admin = Blueprint("admin", __name__, template_folder="../event_finder/templates")
+admin = Blueprint("admin", __name__,
+                  template_folder="../event_finder/templates")
 
 
 @admin.route('/admin')
