@@ -94,6 +94,7 @@ def edit_event(event_id):
 @event.route("/events/<int:event_id>/delete")
 def delete_event(event_id):
     event_to_delete = db_find_first(Event, id=event_id)
+    Attendance.query.filter_by(event_id=event_to_delete.id).delete()
     db.session.delete(event_to_delete)
     db.session.commit()
     return redirect(url_for("event.events"))
