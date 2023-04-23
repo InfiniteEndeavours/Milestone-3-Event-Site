@@ -74,7 +74,7 @@ body {
 
 footer {
     background-color: #4C566A;
-    position: absolute;
+    position: static;
     bottom: 0;
     width: 100%;
 }
