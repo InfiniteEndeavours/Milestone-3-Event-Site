@@ -34,21 +34,21 @@
                         <a href="{{ url_for('event.profile', uuid=session['user_uuid']) }}"
                            class="nav-link">Profile</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="btn ms-md-2" role="button" href="{{ url_for('auth.logout') }}">Logout</a>
-                    </li>
-                    {% if session.admin %}
+                    {% if session.admin == True %}
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Administration</a>
+                            <a href="{{ url_for('admin.admin_page') }}" class="nav-link">Administration</a>
                         </li>
                     {% endif %}
+                    <li class="nav-item">
+                        <a class="btn" role="button" href="{{ url_for('auth.logout') }}">Logout</a>
+                    </li>
                 {% else %}
                     {# If user is not logged in, display Register/Login #}
                     <li class="nav-item">
-                        <a class="btn ms-md-2" role="button" href="{{ url_for('auth.register') }}">Register</a>
+                        <a class="btn" role="button" href="{{ url_for('auth.register') }}">Register</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn ms-md-2" role="button" href="{{ url_for('auth.login') }}">Login</a>
+                        <a class="btn" role="button" href="{{ url_for('auth.login') }}">Login</a>
                     </li>
                 {% endif %}
             </ul>
