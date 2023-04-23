@@ -118,12 +118,12 @@ footer li a {
 .pagination .page-link {
     color: #c7cbcf;
     background-color: #4C566A;
-    border-color: #4C566A;
+    border-color: #2E3440;
 }
 
 .pagination .page-link:hover {
     background-color: #4C566A;
-    border-color: #4C566A;
+    border-color: #2E3440;
 }
 
 .pagination .page-link:focus {
@@ -154,7 +154,7 @@ footer li a {
 
 td a {
     color: #9ACBD6;
-    text-underline: #9ACBD6;
+    text-underline-color: #9ACBD6;
     text-underline-offset: 4px;
 }
 
