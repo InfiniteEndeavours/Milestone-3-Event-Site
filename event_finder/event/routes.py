@@ -129,6 +129,7 @@ def profile(uuid):
 
     if not user:
         abort(404)
+        return redirect(url_for("auth.login"))
 
     if user.uuid != session.get("user_uuid"):
         flash("You do not have permission to view this profile.")
