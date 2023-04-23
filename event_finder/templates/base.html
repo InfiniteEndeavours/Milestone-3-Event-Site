@@ -91,13 +91,13 @@
     <div class="container py-3 py-lg-5">
         <ul class="list-inline">
             <li class="list-inline-item">
-                <a href="#" class="link">Events</a>
+                <a href="{{ url_for(event.index) }}" class="link">Home</a>
             </li>
             <li class="list-inline-item">
-                <a href="#" class="link">Contact</a>
+                <a href="{{ url_for('event.events') }}" class="link">Events</a>
             </li>
             <li class="list-inline-item">
-                <a href="#" class="link">Brief</a>
+                <a href="{{ url_for('event.profile', uuid=session['user_uuid']) }}" class="link">Profile</a>
             </li>
         </ul>
         <ul class="list-inline">
