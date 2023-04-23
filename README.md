@@ -5,7 +5,7 @@ events.
 
 The live website can be found [here](#)
 
-![AmIResponsive]()
+![AmIResponsive](docs/images/am_I_responsive.png)
 
 # Content
 
