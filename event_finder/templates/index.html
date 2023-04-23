@@ -34,7 +34,7 @@
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-body text-center">
-                                <h4 class="card-title">{{ event_one.title }}</h4>
+                                <h2 class="card-title h4">{{ event_one.title }}</h2>
                                 <p class="card-text">{{ event_one.description }}</p>
                                 <a href="{{ url_for('event.event_info', event_id=event_one.id) }}"
                                    class="btn">Event Information</a>
@@ -44,7 +44,7 @@
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-body text-center">
-                                <h4 class="card-title">{{ event_two.title }}</h4>
+                                <h2 class="card-title h4">{{ event_two.title }}</h2>
                                 <p class="card-text">{{ event_two.description }}</p>
                                 <a href="{{ url_for('event.event_info', event_id=event_two.id) }}"
                                    class="btn">Event Information</a>
