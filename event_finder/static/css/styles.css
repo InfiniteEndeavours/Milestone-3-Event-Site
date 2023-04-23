@@ -129,3 +129,8 @@ footer li a {
 .pagination .page-link:focus {
     box-shadow: 0 0 0 0.2rem rgba(199, 203, 207, 0.25);
 }
+
+.event-card {
+    width: 50%;
+    margin: 0 auto;
+}
