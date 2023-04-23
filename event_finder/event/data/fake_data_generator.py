@@ -11,9 +11,11 @@ fake = Faker()
 def create_users(num_users):
     for i in range(num_users):
         # Create a new profile for the user
-        profile = Profile(first_name=fake.first_name(), last_name=fake.last_name())
+        profile = Profile(first_name=fake.first_name(),
+                          last_name=fake.last_name())
         # Create a new user with the profile
-        user = User(username=fake.user_name(), password=generate_password_hash(fake.password()),
+        user = User(username=fake.user_name(),
+                    password=generate_password_hash(fake.password()),
                     uuid=str(uuid4()))  # type: ignore
         # Set the user attribute on the profile
         profile.user = user
@@ -26,11 +28,14 @@ def create_events(num_events):
         title = fake.sentence()
         description = fake.text()
         date = fake.date_between(start_date='today', end_date='+30d')
-        start_time = datetime.strptime(fake.time(pattern='%H:%M:%S'), '%H:%M:%S').time()
-        end_time = (datetime.combine(date, start_time) + timedelta(hours=2)).time()
+        start_time = datetime.strptime(fake.time(
+            pattern='%H:%M:%S'), '%H:%M:%S').time()
+        end_time = (datetime.combine(date, start_time)
+                    + timedelta(hours=2)).time()
         location = fake.address()
         creator = User.query.order_by(db.func.random()).first()
-        event = Event(title=title, description=description, date=date, start_time=start_time, end_time=end_time,
+        event = Event(title=title, description=description,
+                      date=date, start_time=start_time, end_time=end_time,
                       location=location, creator_id=creator.uuid)
         db.session.add(event)
         db.session.commit()

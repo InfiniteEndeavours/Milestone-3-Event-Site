@@ -1,20 +1,24 @@
-from flask import Blueprint, render_template, request, redirect, session, flash, url_for, abort
+from flask import (Blueprint, render_template, request,
+                   redirect, session, flash, url_for, abort)
 from event_finder import db
 from datetime import datetime
 from event_finder.event.models import Event, User, Profile, Attendance
 from event_finder.event.helpers import db_find_first
 import random
 
-event = Blueprint("event", __name__, template_folder="../event_finder/templates")
+event = Blueprint("event", __name__,
+                  template_folder="../event_finder/templates")
 
 
 @event.route("/")
 def index():
-    current_events = list(Event.query.filter(Event.date >= datetime.utcnow()).all())
+    current_events = list(Event.query.filter(
+        Event.date >= datetime.utcnow()).all())
     if current_events:
         event_one = current_events[random.randint(0, len(current_events) - 1)]
         event_two = current_events[random.randint(0, len(current_events) - 1)]
-        return render_template("index.html", event_one=event_one, event_two=event_two)
+        return render_template("index.html",
+                               event_one=event_one, event_two=event_two)
     return render_template("index.html")
 
 
@@ -22,7 +26,8 @@ def index():
 def events():
     page = request.args.get('page', 1, type=int)
     current_date = datetime.utcnow().date()
-    event_list = Event.query.filter(Event.date >= current_date).order_by(Event.date).paginate(page=page, per_page=10)
+    event_list = Event.query.filter(Event.date >= current_date)\
+        .order_by(Event.date).paginate(page=page, per_page=10)
     return render_template("events/events.html", events=event_list)
 
 
@@ -35,8 +40,11 @@ def event_info(event_id):
     user = db_find_first(User, uuid=session.get("user_uuid"))
 
     if user:
-        existing_registration = Attendance.query.filter_by(user_id=user.id, event_id=event_id).first()
-        return render_template("events/event_info.html", event=event_data, existing_registration=existing_registration)
+        existing_registration = Attendance.query.filter_by(
+            user_id=user.id, event_id=event_id).first()
+        return render_template("events/event_info.html",
+                               event=event_data,
+                               existing_registration=existing_registration)
 
     return render_template("events/event_info.html", event=event_data)
 
@@ -58,13 +66,16 @@ def create_event():
         end_time = request.form.get("end_time")
 
         # Check if all fields are filled out
-        event_fields = [title, description, location, date, start_time, end_time]
+        event_fields = [title, description,
+                        location, date, start_time, end_time]
         for field in event_fields:
             if not field:
                 flash(f"Please fill out the required fields.")
                 return render_template("events/create_event.html")
-        new_event = Event(title=title, description=description, location=location, date=date,
-                          start_time=start_time, end_time=end_time, creator_id=user.uuid)
+        new_event = Event(title=title, description=description,
+                          location=location, date=date,
+                          start_time=start_time, end_time=end_time,
+                          creator_id=user.uuid)
         db.session.add(new_event)
         db.session.commit()
         flash("Event created successfully.")
@@ -88,7 +99,8 @@ def edit_event(event_id):
         db.session.commit()
         return redirect(url_for("event.events"))
 
-    return render_template("events/edit_event.html", event=event_to_edit, event_date=event_date)
+    return render_template("events/edit_event.html",
+                           event=event_to_edit, event_date=event_date)
 
 
 @event.route("/events/<int:event_id>/delete")
@@ -103,7 +115,8 @@ def delete_event(event_id):
 @event.route("/events/<int:event_id>/register")
 def event_registration(event_id):
     user = db_find_first(User, uuid=session.get("user_uuid"))
-    registration = Attendance.__table__.insert().values(user_id=user.id, event_id=event_id)
+    registration = Attendance.__table__.insert()\
+        .values(user_id=user.id, event_id=event_id)
     db.session.execute(registration)
     db.session.commit()
     flash("You are now registered for this event.")
@@ -147,4 +160,5 @@ def profile(uuid):
         .order_by(Event.date)
 
     return render_template("profile.html", user=user, profile=user_profile,
-                           created_events=events_created, attending_events=events_attending)
+                           created_events=events_created,
+                           attending_events=events_attending)

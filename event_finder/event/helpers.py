@@ -8,7 +8,8 @@ def db_find_first(model, **kwargs):
     Args:
     model: SQLAlchemy model Object representing a database table.
     **kwargs: One or more keyword arguments representing the filter criteria.
-    The keywords should match the column name and the value should be the desired value.
+    The keywords should match the column name and
+     the value should be the desired value.
 
     Returns:
     The first row from the query that matches the filter criteria,
