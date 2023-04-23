@@ -14,35 +14,35 @@
             </div>
         </div>
         <div class="col">
-        <h2 class="text-center">Events Attending</h2>
+            <h2 class="text-center">Events Attending</h2>
             {% for event in attending_events %}
                 <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ event.title }}</h5>
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                                <small>{{ event.date.strftime('%A, %b %d, %Y') }} - {{ event.start_time }}</small>
-                                <br>
-                                <a href="{{ url_for('event.event_info', event_id=event.id) }}" class=btn">View Event</a>
-                            </li>
-                        </ul>
+                    <div class="card-body text-center">
+                        <h4 class="card-title">{{ event.title }}</h4>
+                        <div class="card-text">
+                            <small>{{ event.date.strftime('%A, %b %d, %Y') }} - {{ event.start_time }}</small>
+                            <br>
+                            <small>{{ event.location }}</small>
+                            <br>
+                            <a href="{{ url_for('event.event_info', event_id=event.id) }}" class="btn">View Event</a>
+                        </div>
                     </div>
                 </div>
             {% endfor %}
         </div>
         <div class="col">
-        <h2 class="text-center">Events Created</h2>
+            <h2 class="text-center">Events Created</h2>
             {% for event in created_events %}
                 <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ event.title }}</h5>
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                                <small>{{ event.date.strftime('%A, %b %d, %Y') }} - {{ event.start_time }}</small>
-                                <br>
-                                <a href="{{ url_for('event.event_info', event_id=event.id) }}" class=btn">View Event</a>
-                            </li>
-                        </ul>
+                    <div class="card-body text-center">
+                        <h4 class="card-title">{{ event.title }}</h4>
+                        <div class="card-text">
+                            <small>{{ event.date.strftime('%A, %b %d, %Y') }} - {{ event.start_time }}</small>
+                            <br>
+                            <small>{{ event.location }}</small>
+                            <br>
+                            <a href="{{ url_for('event.event_info', event_id=event.id) }}" class="btn">View Event</a>
+                        </div>
                     </div>
                 </div>
             {% endfor %}
