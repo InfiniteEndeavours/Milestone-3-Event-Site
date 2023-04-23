@@ -55,13 +55,13 @@ def create_flask_app():
         Returns:
             app (Flask): A Flask application object.
         """
-    # Import the auth and event blueprints
     from event_finder.auth.routes import auth as auth_routes
     from event_finder.event.routes import event as event_routes
+    from event_finder.admin.routes import admin as admin_routes
     # Import the models
     from event_finder.event import models
-    # Register the auth and event blueprints
     app.register_blueprint(auth_routes)
+    app.register_blueprint(admin_routes)
     app.register_blueprint(event_routes)
     # Return the app
     return app

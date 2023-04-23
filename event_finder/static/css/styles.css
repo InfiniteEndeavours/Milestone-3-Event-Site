@@ -135,6 +135,33 @@ footer li a {
     margin: 2rem auto;
 }
 
+/* --------------- Admin Page --------------- */
+
+.table {
+    margin: 1rem 0;
+    width: 100%;
+    max-width: 100%;
+    background-color: transparent;
+    border-color: #c7cbcf;
+    font-family: 'Inter', sans-serif;
+    color: #9ACBD6;
+}
+
+.table thead th {
+    border-top: 0;
+    background-color: #4C566A;
+}
+
+td a {
+    color: #9ACBD6;
+    text-underline: #9ACBD6;
+    text-underline-offset: 4px;
+}
+
+td a:hover {
+    color: #c7cbcf;
+}
+
 /* --------------- Media Queries --------------- */
 
 @media (max-width: 768px) {
