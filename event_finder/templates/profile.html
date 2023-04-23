@@ -38,7 +38,7 @@
                             <li class="list-group-item">
                                 <small>{{ event.date.strftime('%A, %b %d, %Y') }} - {{ event.start_time }}</small>
                                 <br>
-                                <a href="{{ url_for('event.event_info', event_id=event.id) }} class=btn">View Event</a>
+                                <a href="{{ url_for('event.event_info', event_id=event.id) }}" class=btn">View Event</a>
                             </li>
                         </ul>
                     </div>
