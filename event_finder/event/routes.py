@@ -18,7 +18,6 @@ def index():
     return render_template("index.html")
 
 
-
 @event.route("/events")
 def events():
     page = request.args.get('page', 1, type=int)
@@ -32,6 +31,13 @@ def event_info(event_id):
     event_data = db_find_first(Event, id=event_id)
     if not event_data:
         abort(404)
+
+    user = db_find_first(User, uuid=session.get("user_uuid"))
+
+    if user:
+        existing_registration = Attendance.query.filter_by(user_id=user.id, event_id=event_id).first()
+        return render_template("events/event_info.html", event=event_data, existing_registration=existing_registration)
+
     return render_template("events/event_info.html", event=event_data)
 
 
@@ -91,6 +97,26 @@ def delete_event(event_id):
     db.session.delete(event_to_delete)
     db.session.commit()
     return redirect(url_for("event.events"))
+
+
+@event.route("/events/<int:event_id>/register")
+def event_registration(event_id):
+    user = db_find_first(User, uuid=session.get("user_uuid"))
+    registration = Attendance.__table__.insert().values(user_id=user.id, event_id=event_id)
+    db.session.execute(registration)
+    db.session.commit()
+    flash("You are now registered for this event.")
+    return redirect(url_for("event.event_info", event_id=event_id))
+
+
+@event.route("/events/<int:event_id>/unregister")
+def event_deregister(event_id):
+    user = db_find_first(User, uuid=session.get("user_uuid"))
+    db.session.execute(Attendance.__table__.delete().filter(
+        Attendance.user_id == user.id, Attendance.event_id == event_id))
+    db.session.commit()
+    flash("You are now unregistered from this event.")
+    return redirect(url_for("event.event_info", event_id=event_id))
 
 
 @event.route("/profile/<uuid>")

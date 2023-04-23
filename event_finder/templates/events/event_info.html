@@ -15,7 +15,15 @@
                         <p><strong>Date:</strong> {{ event.date.strftime('%A, %b %d, %Y') }}</p>
                         <p><strong>Start Time:</strong> {{ event.start_time }}</p>
                         <p><strong>End Time:</strong> {{ event.end_time }}</p>
-
+                        {% if session.user_uuid %}
+                            {% if existing_registration %}
+                                <a href="{{ url_for('event.event_deregister', event_id=event.id) }}"
+                                   class="btn">Unregister</a>
+                            {% else %}
+                                <a href="{{ url_for('event.event_registration', event_id=event.id) }}"
+                                   class="btn">Register</a>
+                            {% endif %}
+                        {% endif %}
                         {% if session.user_uuid == event.creator_id %}
                             <a href="{{ url_for('event.edit_event', event_id=event.id) }}" class="btn">Edit</a>
                             <a href="{{ url_for('event.delete_event', event_id=event.id) }}" class="btn"
