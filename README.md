@@ -3,7 +3,7 @@
 Event Finder is a website where users can look for events, register for events, and where event coordinators can post
 events.
 
-The live website can be found [here](#)
+The live website can be found [here](https://ci-ms3-event-finder.herokuapp.com/)
 
 ![AmIResponsive](docs/images/am_I_responsive.png)
 
