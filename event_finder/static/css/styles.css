@@ -10,7 +10,7 @@ body {
     padding: 0;
     margin: 0;
     background: #2E3440;
-    color: #9ACBD6;
+    color: #A1D5E0;
     font-family: 'JetBrains Mono', monospace;
     font-size: 18px;
 }
@@ -21,11 +21,11 @@ body {
 
 .btn {
     background: #4C566A;
-    color: #9ACBD6;
+    color: #A1D5E0;
 }
 
 .btn:hover {
-    background-color: #9ACBD6;
+    background-color: #A1D5E0;
     color: #4C566A
 }
 
@@ -40,21 +40,21 @@ body {
 }
 
 .card .btn {
-    background-color: #9ACBD6;
+    background-color: #A1D5E0;
     color: #4C566A;
 }
 
 .card .btn:hover {
     background-color: #4C566A;
-    color: #9ACBD6;
-    border: 1px solid #9ACBD6;
+    color: #A1D5E0;
+    border: 1px solid #A1D5E0;
 }
 
 /* --------------- Base Template --------------- */
 .navbar-brand,
 .navbar-nav > li > a {
     margin: 0.5rem;
-    color: #9ACBD6;
+    color: #A1D5E0;
 }
 
 .navbar-brand {
@@ -65,7 +65,7 @@ body {
 }
 
 .navbar-toggler {
-    color: #9ACBD6;
+    color: #A1D5E0;
 }
 
 .page-container {
@@ -86,7 +86,7 @@ footer {
 footer li a {
     text-decoration: underline;
     text-underline-offset: 4px;
-    color: #9ACBD6;
+    color: #A1D5E0;
 }
 
 /* --------------- Home Page --------------- */
@@ -144,7 +144,7 @@ footer li a {
     background-color: transparent;
     border-color: #c7cbcf;
     font-family: 'Inter', sans-serif;
-    color: #9ACBD6;
+    color: #A1D5E0;
 }
 
 .table thead th {
@@ -153,8 +153,8 @@ footer li a {
 }
 
 td a {
-    color: #9ACBD6;
-    text-underline-color: #9ACBD6;
+    color: #A1D5E0;
+    text-underline-color: #A1D5E0;
     text-underline-offset: 4px;
 }
 
