@@ -24,7 +24,6 @@ The live website can be found [here](https://ci-ms3-event-finder.herokuapp.com/)
     * [Frameworks, Programs, Libraries and APIs used](#programs-libraries-frameworks-and-apis)
 * [Deployment & Development](#development-and-deployment)
     * [Local Development](#local-development)
-    * [Online Development](#online-development)
     * [Deployment](#deployment)
 * [Testing](#testing)
     * [Bugs](#bugs)
@@ -71,7 +70,6 @@ As the site designer, I want to be able to allow users to do the following:
 As an individual, want to be able to:
 
 - View events in my area.
-- Filter events based on categories.
 - Create an account.
 - View which events I have registered for.
 
@@ -82,7 +80,6 @@ As an event coordinator, want to be able to:
 - Create events.
 - Update events.
 - Delete Events.
-- View who is interested in a specific event.
 - Promote my event.
 
 # Design and User Interface
