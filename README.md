@@ -182,6 +182,9 @@ change in the future.
 
 The schema for the database can be found [here](docs/images/db_schema.png).
 
+The [Models](event_finder/event/models.py) were created using SQLAlchemy, and the tables were then created again with
+SQLAlchemy using `db.create_all()`.
+
 ## Accessibility
 
 The site will be accessible to all users, regardless of disability.
