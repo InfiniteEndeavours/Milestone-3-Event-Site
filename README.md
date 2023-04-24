@@ -375,18 +375,18 @@ As a site designer, I have been able to provide the following to users:
 
 - Registration Function
     - When a user submits the registration form with valid information, an entry is created in the database.
-      ![User Example](docs/images/db_user_entry.png)
+      ![User Example](docs/user_stories/db_user_entry.png)
 - Login Function
     - When a user submits the login form with valid credentials, then a session cookie is added to indicate they are
       logged in.
-      ![Session Token](docs/images/session_cookie.png)
+      ![Session Token](docs/user_stories/session_cookie.png)
 - Ability to create events
     - Users are able to create events, which are then stored in the database.
-      ![Event Example](docs/images/db_event_entry.png)
+      ![Event Example](docs/user_stories/db_event_entry.png)
 - Ability to register interest in an event
     - Users are able to register interest in events, which then stores the user_id and event_id in the `attendance`
       table.'
-      ![Session Token](docs/images/db_attendance_entry.png)
+      ![Session Token](docs/user_stories/db_attendance_entry.png)
 
 ### Individual Goals
 
@@ -394,13 +394,13 @@ As an individual I can perform the following:
 
 - View events
     - I am able to view events on the events page.
-      ![Events Example](docs/images/user_events.png)
+      ![Events Example](docs/user_stories/user_events.png)
 - Create an account
     - I am able to create an account and view it on the profile page.
-      ![Profile Example](docs/images/user_profile.png)
+      ![Profile Example](docs/user_stories/user_profile.png)
 - View which events I have registered for.
     - I can view which events I have registered for on the profile page.
-      ![Attending Events Example](docs/images/user_attending_events.png)
+      ![Attending Events Example](docs/user_stories/user_attending_events.png)
 
 ### Event Coordinator
 
@@ -408,13 +408,45 @@ As an event coordinator, I can perform the following:
 
 - Create Events
     - I can create an event when logged in.
-      ![Event Creation](docs/images/create_event.png)
+      ![Event Creation](docs/user_stories/create_event.png)
 - Update Events
     - I can update the event I created.
-      ![Event Update](docs/images/update_event.png)
+      ![Event Update](docs/user_stories/update_event.png)
 - Delete Events
     - I can delete the event I created. After pressing confirm, the event is deleted.
-      ![Event Deletion](docs/images/delete_event.png)
+      ![Event Deletion](docs/user_stories/delete_event.png)
 - Promote my Event
     - I can see events are promoted on the home page.
-      ![Event Deletion](docs/images/random_event.png)
+      ![Event Deletion](docs/user_stories/random_event.png)
+
+## Lighthouse Testing
+
+Below are links to lighthouse tests for each page on the site:
+
+- index.html/base.html
+    - Mobile
+    - Desktop
+- event.html
+    - Mobile
+    - Desktop
+- create_event.html
+    - Mobile
+    - Desktop
+- edit_event.html
+    - Mobile
+    - Desktop
+- event_info.html
+    - Mobile
+    - Desktop
+- profile.html
+    - Mobile
+    - Desktop
+- admin.html
+    - Mobile
+    - Desktop
+- register.html
+    - Mobile
+    - Desktop
+- login.html
+    - Mobile
+    - Desktop
