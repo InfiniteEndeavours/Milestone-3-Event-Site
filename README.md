@@ -319,3 +319,102 @@ following:
 
 During the project, I have tested using Google Chrome, Firefox and Polypane. These helped me trouble shoot styling
 issues.
+
+The terminal was also used extensively to troubleshoot errors with Flask and SQLAlchemy.
+
+## Bugs
+
+During development and testing, a number of bugs were discovered. Where a fix has not been applied, a reason is given.
+
+1. Conflict between relationships User and Event relationships in Models.py.
+    - Resolved - Removed unnecessary relationship from Models.py
+2. Registration form clears if validation of password fails.
+    - Unresolved - No fix has yet been put in place. Based on research, this would require a reconstruction of the
+      route.
+3. Table on Administration page does not scale with mobile devices.
+    - Unresolved - As this is only visible to the site admin (or creator of the DB), that this feature doesn't need to
+      be prioritised. If time is available then a fix will be looked at.
+4. Featured Events on Home page can sometimes display the same event.
+    - Unresolved - This event has a low chance of happening and is more prominent when there are only a handful of
+      entries in the database.
+
+## Validation
+
+To validate the HTML, CSS and Python the following sites were used:
+
+- [HTML Validator](https://validator.w3.org/) by W3C
+- [CSS Validator](https://jigsaw.w3.org/css-validator/) by W3C
+- [CI Python Linter](https://pep8ci.herokuapp.com/)
+
+## HTML Validation
+
+Below are links to screenshots of the HTML Validation results.
+Please note, that due to the use of Font Awesome Icons, an unavoidable error is created.
+
+- [base.html](docs/validation/html/index.png) and [index.html](docs/validation/html/index.png)
+- [events.html](docs/validation/html/events.png)
+- [event_info.html](docs/validation/html/event_info.png)
+- [create_event.html](docs/validation/html/create_event.png)
+- [edit_event.html](docs/validation/html/edit_event.png)
+- [profile.html](docs/validation/html/profile.png)
+- [register.html](docs/validation/html/register.png)
+- [login.html](docs/validation/html/login.png)
+- [admin.html](docs/validation/html/admin_page.png)
+
+[Here](docs/validation/css/css.png) is a link to the CSS Validation.
+
+[This folder](docs/validation/python) contains screenshots of all Python files passing Code Institutes PEP8 Linter.
+
+The code was also checked using `autopep8` through PyCharm, which all scripts passed.
+
+## Testing User Stories
+
+### Site Designer Goals
+
+As a site designer, I have been able to provide the following to users:
+
+- Registration Function
+    - When a user submits the registration form with valid information, an entry is created in the database.
+      ![User Example](docs/images/db_user_entry.png)
+- Login Function
+    - When a user submits the login form with valid credentials, then a session cookie is added to indicate they are
+      logged in.
+      ![Session Token](docs/images/session_cookie.png)
+- Ability to create events
+    - Users are able to create events, which are then stored in the database.
+      ![Event Example](docs/images/db_event_entry.png)
+- Ability to register interest in an event
+    - Users are able to register interest in events, which then stores the user_id and event_id in the `attendance`
+      table.'
+      ![Session Token](docs/images/db_attendance_entry.png)
+
+### Individual Goals
+
+As an individual I can perform the following:
+
+- View events
+    - I am able to view events on the events page.
+      ![Events Example](docs/images/user_events.png)
+- Create an account
+    - I am able to create an account and view it on the profile page.
+      ![Profile Example](docs/images/user_profile.png)
+- View which events I have registered for.
+    - I can view which events I have registered for on the profile page.
+      ![Attending Events Example](docs/images/user_attending_events.png)
+
+### Event Coordinator
+
+As an event coordinator, I can perform the following:
+
+- Create Events
+    - I can create an event when logged in.
+      ![Event Creation](docs/images/create_event.png)
+- Update Events
+    - I can update the event I created.
+      ![Event Update](docs/images/update_event.png)
+- Delete Events
+    - I can delete the event I created. After pressing confirm, the event is deleted.
+      ![Event Deletion](docs/images/delete_event.png)
+- Promote my Event
+    - I can see events are promoted on the home page.
+      ![Event Deletion](docs/images/delete_event.png)
