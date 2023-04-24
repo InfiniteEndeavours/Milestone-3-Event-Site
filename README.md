@@ -417,4 +417,4 @@ As an event coordinator, I can perform the following:
       ![Event Deletion](docs/images/delete_event.png)
 - Promote my Event
     - I can see events are promoted on the home page.
-      ![Event Deletion](docs/images/delete_event.png)
+      ![Event Deletion](docs/images/random_event.png)
