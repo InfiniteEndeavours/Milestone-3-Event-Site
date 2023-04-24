@@ -3,13 +3,14 @@
 {% block title %}Event Haven - Events{% endblock %}
 
 {% block content %}
-    <h1 class="text-center">Events
-        {% if 'user_uuid' in session %}
-            <div class="col-12">
-                <a href="{{ url_for('event.create_event') }}" class="btn my-3">Add Event</a>
-            </div>
-        {% endif %}
-    </h1>
+
+    <h1 class="text-center">Events</h1>
+    {% if 'user_uuid' in session %}
+        <div class="col-12 text-center">
+            <a href="{{ url_for('event.create_event') }}" class="btn my-2">Add Event</a>
+        </div>
+    {% endif %}
+
 
     {% for event in events.items %}
         <div class="card event-card">
