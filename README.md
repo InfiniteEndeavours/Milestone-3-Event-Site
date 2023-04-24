@@ -173,8 +173,14 @@ They will also be related to the theme of the site, which is events.
 
 ## Structure
 
+### Website Structure
+
 The structure for the site can be found [here](docs/wireframes/Wireframe.pdf). It's possible that this may
 change in the future.
+
+### Database Structure
+
+The schema for the database can be found [here](docs/images/db_schema.png).
 
 ## Accessibility
 
