@@ -174,7 +174,7 @@ They will also be related to the theme of the site, which is events.
 ## Structure
 
 The structure for the site can be found [here](docs/wireframes/Wireframe.pdf). It's possible that this may
-change in future.
+change in the future.
 
 ## Accessibility
 
