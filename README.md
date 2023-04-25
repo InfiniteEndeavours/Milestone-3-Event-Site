@@ -337,6 +337,8 @@ During development and testing, a number of bugs were discovered. Where a fix ha
 4. Featured Events on Home page can sometimes display the same event.
     - Unresolved - This event has a low chance of happening and is more prominent when there are only a handful of
       entries in the database.
+5. When creating or editing an event, using more than 500 characters in the description would cause an overflow error.
+    - Resolved - Added a maxlength attribute to the textarea element in the form.
 
 ## Validation
 
