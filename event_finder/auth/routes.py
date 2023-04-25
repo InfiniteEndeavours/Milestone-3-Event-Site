@@ -143,6 +143,7 @@ def login():
             if check_password_hash(user.password, password):
                 # Add uuid as a session cookie
                 session["user_uuid"] = user.uuid
+                # If a user is an admin, add admin session cookie
                 if user.admin:
                     session["admin"] = True
 
@@ -169,6 +170,9 @@ def logout():
         Logs out a user.
 
         Removes the session cookies and redirects to the login page.
+
+        :returns:
+            Login.html
     """
     if session.keys:
         for key in list(session.keys()):
