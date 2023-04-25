@@ -63,8 +63,8 @@ def event_info(event_id):
     user = db_find_first(User, uuid=session.get("user_uuid"))
     # If the user is logged in, check if they are registered for the event
     if user:
-        existing_registration = Attendance.query.filter_by(
-            user_id=user.id, event_id=event_id).first()
+        existing_registration = Attendance.query \
+            .filter_by(user_id=user.id, event_id=event_id).first()
         return render_template("events/event_info.html",
                                event=event_data,
                                existing_registration=existing_registration)
