@@ -216,6 +216,7 @@ During this project, I will use the following programs:
 - Google Chrome
 - Google Chrome DevTools
 - Firefox
+- Polypane
 
 I will use the following libraries and frameworks:
 
@@ -226,14 +227,23 @@ I will use the following libraries and frameworks:
 - Flask
 - Faker (Fake data generation for testing)
 
+For Faker, I used [this file](event_finder/event/data/fake_data_generator.py) to generate the helper functions for the
+fake data.
+
+A function was then created in __init__.py called `fake_data` which combined all the helper functions into one function.
+
+This function was then imported into app.py and called in combination with db.drop_all() and db.create_all() to prep the
+database and generate clean fake data for testing.
+
 The database I have chosen to use is PostgresSQL, which is a relational database.
 I will use both SQL and SQLAlchemy to interact with the database.
 
 These sites were also used:
 
-- Am I Responsive
-- Compressor.io
-- Converti.co
+- Am I Responsive - for the document title image.
+- Compressor.io - for compressing images.
+- Converti.co - for converting images to webp.
+- Unsplash - for images.
 
 # Development and Deployment
 
