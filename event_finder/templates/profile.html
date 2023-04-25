@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-body text-center">
                     <i class="fas fa-user-circle fa-6x mb-3"></i>
-                    <h4 class="card-title">Username: {{ user.username }}</h4>
+                    <p class="card-title h5">Username: {{ user.username }}</p>
                     <p class="card-text">Name: {{ profile.first_name }} {{ profile.last_name }}</p>
                 </div>
             </div>
@@ -18,7 +18,7 @@
             {% for event in attending_events %}
                 <div class="card">
                     <div class="card-body text-center">
-                        <h4 class="card-title">{{ event.title }}</h4>
+                        <p class="card-title h5">{{ event.title }}</p>
                         <div class="card-text">
                             <small>{{ event.date.strftime('%A, %b %d, %Y') }} - {{ event.start_time }}</small>
                             <br>
@@ -35,7 +35,7 @@
             {% for event in created_events %}
                 <div class="card">
                     <div class="card-body text-center">
-                        <h4 class="card-title">{{ event.title }}</h4>
+                        <p class="card-title h5">{{ event.title }}</p>
                         <div class="card-text">
                             <small>{{ event.date.strftime('%A, %b %d, %Y') }} - {{ event.start_time }}</small>
                             <br>
