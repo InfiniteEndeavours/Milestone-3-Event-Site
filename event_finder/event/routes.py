@@ -95,6 +95,13 @@ def create_event():
         start_time = request.form.get("start_time")
         end_time = request.form.get("end_time")
 
+        date = datetime.strptime(date, "%Y-%m-%d").date()
+
+        # Check if the event date is in the past
+        if date < datetime.utcnow().date():
+            flash("Event date must be in the future.")
+            return render_template("events/create_event.html")
+
         # Check if all fields are filled out
         event_fields = [title, description,
                         location, date, start_time, end_time]
