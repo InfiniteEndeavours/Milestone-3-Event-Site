@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="row">
-        <div class="col">
+        <div class="col-xs-12 col-md-4">
             <div class="card">
                 <div class="card-body text-center">
                     <i class="fas fa-user-circle fa-6x mb-3"></i>
@@ -13,7 +13,7 @@
                 </div>
             </div>
         </div>
-        <div class="col">
+        <div class="col-xs-12 col-md-4">
             <h2 class="text-center">Events Attending</h2>
             {% for event in attending_events %}
                 <div class="card">
@@ -30,7 +30,7 @@
                 </div>
             {% endfor %}
         </div>
-        <div class="col">
+        <div class="col-xs-12 col-md-4">
             <h2 class="text-center">Events Created</h2>
             {% for event in created_events %}
                 <div class="card">
