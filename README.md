@@ -459,3 +459,54 @@ Below are links to lighthouse tests for each page on the site:
 - login.html
     - [Mobile](docs/lighthoust_testing/login_mobile.png)
     - [Desktop](docs/lighthoust_testing/login_desktop.png)
+
+## Manual Testing
+
+For manual testing, I used three devices;
+
+- Desktop - 3440 x 1440 - Google Chrome, Safari, Firefox
+- Laptop - 2560 x 1600 - Google Chrome, Safari, Firefox
+- Mobile - 1284 x 2778 (Portrait) and 2778 x 1284 (Landscape) - Google Chrome, Safari, Firefox
+
+### Testing Process
+
+### Responsiveness
+
+While testing the responsiveness of the site, I noticed no issues with responsiveness or any elements being moved out of
+place.
+
+As I don't have a tablet, I used Polypanes device emulation to simulate a tablet and noticed no issues there
+either.
+
+On mobile, two issues were discovered, on the profile page, and administration page.
+
+On the profile page, the user information banner and 'Events Attending' section were not moving correctly. On smaller
+devices each section should be in its on column. I resolved this by updating the column sizes in the containing divs.
+Fixed in commit `c38bc883`.
+
+On the administration page, with devices smaller than 770px in width, the table doesn't resize correctly. I resolved
+this by making the `location`, `start time` and `end time` visible only on large breakpoints and above. This was fixed
+in commit `5bb29f04`.
+
+There is still an issue where on devices lower than 348px in width, the table will still break formatting. I have left
+this as it is, as the average mobile device is wider than this.
+
+### Hyperlinks
+
+I visited each page on the site and tested all hyperlinks that were present. Links which navigate to different pages on
+the site worked fine, along with links to external sites in the footer. All external links opened in a new tab.
+
+# Credits
+
+## Code
+
+- Bootstrap 5.2: THis library was used to make the site responsive.
+
+## Content
+
+- Example events were created by friends and family.
+
+## Acknowledgements
+
+- Andrew Buncombe (Work Colleague) for advice on the Database Schema.
+- Jack Wachira - My Code Institute Mentor for his feedback on the project.

@@ -14,9 +14,9 @@
             <tr>
                 <th>Title</th>
                 <th>Date</th>
-                <th>Location</th>
-                <th>Start Time</th>
-                <th>End Time</th>
+                <th class="d-none d-lg-table-cell">Location</th>
+                <th class="d-none d-lg-table-cell">Start Time</th>
+                <th class="d-none d-lg-table-cell">End Time</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -25,9 +25,9 @@
                 <tr>
                     <td><a href="{{ url_for('event.event_info', event_id=event.id) }}">{{ event.title }}</a></td>
                     <td>{{ event.date.strftime('%A, %b %d, %Y') }}</td>
-                    <td>{{ event.location }}</td>
-                    <td>{{ event.start_time }}</td>
-                    <td>{{ event.end_time }}</td>
+                    <td class="d-none d-lg-table-cell">{{ event.location }}</td>
+                    <td class="d-none d-lg-table-cell">{{ event.start_time }}</td>
+                    <td class="d-none d-lg-table-cell">{{ event.end_time }}</td>
                     <td>
                         <form action="{{ url_for('admin.delete_event', event_id=event.id) }}" method="POST">
                             <button type="submit" class="btn">Delete Event</button>
