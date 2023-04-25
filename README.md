@@ -385,7 +385,7 @@ As a site designer, I have been able to provide the following to users:
       ![Event Example](docs/user_stories/db_event_entry.png)
 - Ability to register interest in an event
     - Users are able to register interest in events, which then stores the user_id and event_id in the `attendance`
-      table.'
+      table.
       ![Session Token](docs/user_stories/db_attendance_entry.png)
 
 ### Individual Goals
@@ -421,32 +421,41 @@ As an event coordinator, I can perform the following:
 
 ## Lighthouse Testing
 
+During the Lighthouse Testing, I saw consistently lower scores on the mobile tests. I believe this is due to Chrome
+emulating a device from 2016. While testing on my mobile, an iPhone 12 Pro Max, and on a Samsung S20, I saw no
+performance issues.
+
+Another probable cause of the poor performance during the mobile test score is the amount of unused CSS being imported
+by Bootstrap, which I am
+currently unable to minimise properly. While trying to get the Bootstrap file minimised to use only the styles my site
+uses, I was able to reduce the file from 190KB to roughly 30KB.
+
 Below are links to lighthouse tests for each page on the site:
 
 - index.html/base.html
-    - Mobile
-    - Desktop
-- event.html
-    - Mobile
-    - Desktop
+    - [Mobile](docs/lighthoust_testing/index_mobile.png)
+    - [Desktop](docs/lighthoust_testing/index_desktop.png)
+- events.html
+    - [Mobile](docs/lighthoust_testing/events_mobile.png)
+    - [Desktop](docs/lighthoust_testing/events_desktop.png)
 - create_event.html
-    - Mobile
-    - Desktop
+    - [Mobile](docs/lighthoust_testing/create_event_mobile.png)
+    - [Desktop](docs/lighthoust_testing/create_event_desktop.png)
 - edit_event.html
-    - Mobile
-    - Desktop
+    - [Mobile](docs/lighthoust_testing/edit_event_mobile.png)
+    - [Desktop](docs/lighthoust_testing/edit_event_desktop.png)
 - event_info.html
-    - Mobile
-    - Desktop
+    - [Mobile](docs/lighthoust_testing/event_info_mobile.png)
+    - [Desktop](docs/lighthoust_testing/event_info_desktop.png)
 - profile.html
-    - Mobile
-    - Desktop
+    - [Mobile](docs/lighthoust_testing/profile_mobile.png)
+    - [Desktop](docs/lighthoust_testing/profile_desktop.png)
 - admin.html
-    - Mobile
-    - Desktop
+    - [Mobile](docs/lighthoust_testing/admin_mobile.png)
+    - [Desktop](docs/lighthoust_testing/admin_desktop.png)
 - register.html
-    - Mobile
-    - Desktop
+    - [Mobile](docs/lighthoust_testing/register_mobile.png)
+    - [Desktop](docs/lighthoust_testing/register_desktop.png)
 - login.html
-    - Mobile
-    - Desktop
+    - [Mobile](docs/lighthoust_testing/login_mobile.png)
+    - [Desktop](docs/lighthoust_testing/login_desktop.png)
