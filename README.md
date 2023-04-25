@@ -377,7 +377,10 @@ Please note, that due to the use of Font Awesome Icons, an unavoidable error is 
 
 [This folder](docs/validation/python) contains screenshots of all Python files passing Code Institutes PEP8 Linter.
 
-The code was also checked using `autopep8` through PyCharm, which all scripts passed.
+The code was also checked using `pycodestyle` through PyCharm, which all scripts passed.
+
+[This](https://mariasoria.dev/en/2022-07-27-how-to-configure-a-linter-formatter-in-pycharm) guide was used to set this
+up.
 
 ## Testing User Stories
 
