@@ -486,7 +486,7 @@ Fixed in commit `c38bc883`.
 
 On the administration page, with devices smaller than 770px in width, the table doesn't resize correctly. I resolved
 this by making the `location`, `start time` and `end time` visible only on large breakpoints and above. This was fixed
-in commit `5bb29f04`.
+in commit `89574543`.
 
 There is still an issue where on devices lower than 348px in width, the table will still break formatting. I have left
 this as it is, as the average mobile device is wider than this.
