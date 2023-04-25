@@ -25,17 +25,6 @@ app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DB_URI")
 db = SQLAlchemy(app)
 
 
-def fake_data():
-    from event_finder.event.data.fake_data_generator import (
-        create_users, create_events, create_attendances)
-    # Create 10 users
-    create_users(10)
-    # Create 20 events
-    create_events(20)
-    # Create 30 attendances
-    create_attendances(30)
-
-
 @app.errorhandler(403)
 def forbidden(e):
     return render_template("errors/403.html"), 404
@@ -50,12 +39,11 @@ def create_flask_app():
     """
         Creates a Flask application object.
 
-        This function creates a Flask application object,
-         registers the auth and event blueprints,
-        and imports the models used in the application.
+        This function is used to create a Flask application object and
+        register the blueprints.
 
         Returns:
-            app (Flask): A Flask application object.
+            app (Flask): Flask application object
         """
     from event_finder.auth.routes import auth as auth_routes
     from event_finder.event.routes import event as event_routes
