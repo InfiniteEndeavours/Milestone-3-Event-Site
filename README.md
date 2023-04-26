@@ -179,6 +179,48 @@ change in the future.
 
 The schema for the database can be found [here](docs/images/db_schema.png).
 
+The User model has been defined as follows:
+
+| Column Name | Schema                                                           |
+|-------------|------------------------------------------------------------------|
+| ID          | Primary Key                                                      |
+| uuid        | Varchar(36), Unique, Not Nullable, default value of uuid.uuid4() |
+| username    | varchar(50), Unique, Not Nullable                                |
+| password    | varchar(255)                                                     |
+| admin       | Boolean, default value of False                                  |
+| profile     | One-to-one relationship with the Profile model.                  |
+| events      | One-to-many relationship with the Event model.                   |
+
+The Profile model has been defined as follows:
+
+| Column Name | Schema                           |
+|-------------|----------------------------------|
+| ID          | Primary Key                      |
+| first_name  | Varchar(50), Not Nullable        |
+| last_name   | Varchar(50), Not Nullable        |
+| uuid        | Foreign Key to User UUID, Unique |
+
+The Event model has been defined as follows:
+
+| Column Name | Schema                                                |
+|-------------|-------------------------------------------------------|
+| ID          | Primary Key                                           |
+| title       | Varchar(100), Not Nullable                            |
+| description | Varchar(500), Not Nullable                            |
+| date        | DateTime, Not Nullable, default value of today's date |
+| start_time  | Time, Not Nullable, default value of 9(am)            |
+| end_time    | Time, Not Nullable, default value of 17(5PM)          |
+| location    | Varchar(255), Not Nullable                            |
+| creator_id  | Foreign Key to User UUID, Not Nullable                |
+
+The Attendance model has been defined as follows:
+
+| Column Name | Schema                                |
+|-------------|---------------------------------------|
+| id          | Primary Key                           |
+| user_id     | Foreign Key to User ID, Not Nullable  |
+| event_id    | Foreign Key to Event ID, Not Nullable |
+
 The [Models](event_finder/event/models.py) were created using SQLAlchemy, and the tables were then created again with
 SQLAlchemy using `db.create_all()`.
 
