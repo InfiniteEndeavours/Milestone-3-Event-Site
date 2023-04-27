@@ -1,5 +1,6 @@
 from event_finder import db
 
+
 def db_find_first(model, **kwargs):
     """
     Queries a database model and returns the first result found.
