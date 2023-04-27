@@ -35,7 +35,7 @@ def db_find_first(model, **kwargs):
      the value should be the desired value.
      example: db_find_first(User, username='admin')
 
-    :return
+    :return:
     The first row from the query that matches the filter criteria,
      or None if no matching row is found.
     """
@@ -69,6 +69,22 @@ def validate_password(password, password_confirm):
 
 
 def validate_form_data(form_data, form_type):
+    """
+    Validate the form data according to specified form type.
+
+    :param:
+        form_data: Dictionary containing data from form.
+        form_type: String to represent a form type. "event",
+         "registration" and "login" are all valid
+          options for form_type.
+
+    :returns:
+        Tuple with two elements; The first is a boolean to
+         indicate if validation was successful or not.
+          The second is a message to show the result
+           of the validation.
+
+    """
     if form_type == "event":
         required_fields = event_form_types
     elif form_type == "registration":
@@ -78,14 +94,22 @@ def validate_form_data(form_data, form_type):
     else:
         return False, "Unknown Form"
 
+    # Iterate over each field in required_fields dictionary
     for field_name, (field_type, field_format) in required_fields.items():
+        # Obtain value from form_data dictionary
         value = form_data.get(field_name)
 
         if field_type == datetime:
             try:
                 datetime.strptime(value, field_format)
             except ValueError:
-                return False, f"Invalid format for {field_name}, got {value}, expected {field_format}"
+                return False, f"Invalid format for" \
+                              f" {field_name}, got {value}," \
+                              f" expected {field_format}"
+        # Check that value has correct data type
         elif not isinstance(value, field_type):
-            return False, f"Invalid type on {field_name}. Expected {field_type}, got {type(value)}"
+            # Return false and an error message if data type is incorrect
+            return False, f"Invalid type on" \
+                          f" {field_name}. Expected {field_type}," \
+                          f" got {type(value)}"
     return True, "All fields are valid"
