@@ -3,7 +3,7 @@ from flask import (Blueprint, render_template, request,
 from event_finder import db
 from datetime import datetime
 from event_finder.event.models import Event, User, Profile, Attendance
-from event_finder.helpers import db_find_first
+from event_finder.helpers import db_find_first, validate_form_data
 import random
 
 event = Blueprint("event", __name__,
@@ -95,6 +95,12 @@ def create_event():
         start_time = request.form.get("start_time")
         end_time = request.form.get("end_time")
 
+        form_data = request.form
+        is_valid, message = validate_form_data(form_data, "event")
+        if not is_valid:
+            flash(message)
+            return redirect(url_for("event.create_event"))
+
         date = datetime.strptime(date, "%Y-%m-%d").date()
 
         # Check if the event date is in the past
@@ -143,6 +149,13 @@ def edit_event(event_id):
         event_to_edit.date = request.form.get("date")
         event_to_edit.start_time = request.form.get("start_time")
         event_to_edit.end_time = request.form.get("end_time")
+
+        form_data = request.form
+        is_valid, message = validate_form_data(form_data, "event")
+        if not is_valid:
+            flash(message)
+            return redirect(url_for("event.edit_event", event_id=event_id))
+
         db.session.add(event_to_edit)
         db.session.commit()
         return redirect(url_for("event.events"))

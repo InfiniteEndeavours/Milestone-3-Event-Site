@@ -2,7 +2,7 @@ from flask import (Blueprint, render_template,
                    request, redirect, session, flash, url_for)
 from event_finder import db
 from event_finder.event.models import User, Profile
-from event_finder.helpers import validate_password
+from event_finder.helpers import validate_password, validate_form_data
 from werkzeug.security import generate_password_hash, check_password_hash
 from uuid import uuid4
 
@@ -42,6 +42,12 @@ def register():
         last_name: str = request.form.get('lname')
         form_password: str = request.form.get('password')
         form_password_confirm: str = request.form.get('confirm-password')
+
+        form_data = request.form
+        is_valid, message = validate_form_data(form_data, "registration")
+        if not is_valid:
+            flash(message)
+            return redirect(url_for("auth.register"))
 
         # Check if username is already registered
         existing_user_check = User.query.filter_by(username=username).first()
@@ -109,6 +115,12 @@ def login():
     if request.method == "POST":
         username: str = request.form.get('username').lower()
         password: str = request.form.get('password')
+
+        form_data = request.form
+        is_valid, message = validate_form_data(form_data, "login")
+        if not is_valid:
+            flash(message)
+            return redirect(url_for("auth.login"))
 
         user = User.query.filter_by(username=username).first()
 
