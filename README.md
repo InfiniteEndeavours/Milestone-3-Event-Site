@@ -292,46 +292,48 @@ For this project, I developed on my workstation using PyCharm.
 
 ### Local Development
 
-Before being able to develop on my local machine, prerequisites needed to be met. These were:
+To develop this repository locally, you will need to do the following:
 
-* Git - Installed via XCode CLI - Provides Version Control.
-* PyEnv - Installed via HomeBrew - Provides ability to manage Python Versions.
-* PyEnv Venv - Installed via HomeBrew - Provides ability to manage Virtual Environments through PyEnv.
-* Python 3.10 - Installed via PyEnv.
-* PostgreSQL@15 - Installed via HomeBrew and activated with HomeBrew services
+1. Install PostgreSQL (Version 15), though with modification to the DB_URI env key you can use another relational
+   database.
+2. Install Python (Version 3.10).
+3. Clone this repository.
+    - This can be done by either using `git clone https://github.com/InfiniteEndeavours/Milestone-3-Event-Site.git` in
+      the terminal, or by using GitHub Desktop.
+4. Create a virtual environment.
+    - This can be done by using `python -m venv venv` in the terminal.
+    - The purpose of a virtual environment is to keep the dependencies for this project separate from other projects.
+5. Activate the virtual environment.
+    - This can be done by using `source venv/bin/activate` in the terminal.
+6. Install program requirements.
+    - This can be done by using `pip install -r requirements.txt` in the terminal.
+7. Create a `.gitignore` file and add `env.py` to it.
+8. Create the env.py file in the root of your project directory.
+9. Add the following to env.py
 
-With these installed, I was able to begin local development, I performed this by:
+- ```python
+   import os
 
-1. Opening Pycharm and creating a new Project.
-2. Initialising a new Git Repository.
-3. Logging into GitHub through PyCharm.
-4. Create initial commit and push the repository to GitHub.
-5. Add `env.py` to `.gitignore` to prevent Flask secret key and Database URI from being exposed to public.
-6. Add following to `env.py`:
-   ```python
-    import os
+   # Set IP for Flask Server - 0.0.0.0 uses all IPs on Device
+   os.environ.setdefault("IP", "0.0.0.0")
+        
+   # Set Port for Flask Server - 5000 is common but interferes with Airport on macOS
+   os.environ.setdefault("PORT", "5555")
+        
+   # Set Debug to True - Enables development server for Flask
+   # Remove this key before deploying to production
+   os.environ.setdefault("DEBUG", "True")
+        
+   # Set SECRET_KEY for Flask Flashes
+   os.environ.setdefault("SECRET_KEY", "<SECRET_KEY>")
+        
+   # Database Connection String
+   os.environ.setdefault("DB_URI", "postgresql://user:password@hostname/database_name")```
 
-    # Set IP for Flask Server - 0.0.0.0 uses all IPs on Device
-    os.environ.setdefault("IP", "0.0.0.0")
-    
-    # Set Port for Flask Server - 5000 is common but interferes with Airport on macOS
-    os.environ.setdefault("PORT", "5555")
-    
-    # Set Debug to True - Enables development server for Flask
-    os.environ.setdefault("DEBUG", "True")
-    
-    # Set SECRET_KEY for Flask Flashes
-    os.environ.setdefault("SECRET_KEY", "SECRET_KEY_VALUE")
-    # Generated using randomkeygen.com
-    
-    # Database Connection String
-    os.environ.setdefault("DB_URI", "postgresql://user:password@hostname/database_name")
-    # Obtained from ElephantSQL dashboard
-   ```
+10. Run the app.py file.
+    - This can be done by using `python app.py` in the terminal.
 
-7. Installing [requirements](requirements.txt) in a Virtual Environment (Default with PyCharm).
-
-For Development, I used Google Chrome, FireFox and Polypane for testing.
+For browser and CSS testing, I used Google Chrome, FireFox and Polypane for testing.
 
 To fill my database with data, so I could build web pages etc. properly, I used Faker to create fake data.
 
