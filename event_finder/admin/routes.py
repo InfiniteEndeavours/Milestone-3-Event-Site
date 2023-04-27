@@ -11,9 +11,11 @@ admin = Blueprint("admin", __name__,
 @admin.route('/admin')
 def admin_page():
     """
-    admin_page function
+    admin_page function.
+
     If the user who loads the page is an admin, they are shown the admin page,
     else they are diverted to a 403 and told they are not authorised.
+
     :return:
         admin.html if authorised
         403.html if unauthorised
@@ -32,7 +34,8 @@ def admin_page():
 @admin.route('/admin/delete-event/<int:event_id>', methods=["POST"])
 def delete_event(event_id):
     """
-    Admin delete event
+    Admin delete event.
+
     If the admin chooses to delete an event, the event ID is passed in
     to the db_find_first helper function. This queries the
     event table to find the matching event. Then all
