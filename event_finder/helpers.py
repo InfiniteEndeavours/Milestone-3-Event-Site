@@ -25,7 +25,7 @@ login_form_types = {
 
 def db_find_first(model, **kwargs):
     """
-    Queries a database model and returns the first result found.
+    Query a database model and returns the first result found.
 
     :param:
     model: SQLAlchemy model Object representing a database table.
