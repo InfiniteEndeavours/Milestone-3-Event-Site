@@ -3,7 +3,7 @@ from flask import (Blueprint, render_template, request,
 from event_finder import db
 from datetime import datetime
 from event_finder.event.models import Event, User, Profile, Attendance
-from event_finder.event.helpers import db_find_first
+from event_finder.helpers import db_find_first
 import random
 
 event = Blueprint("event", __name__,

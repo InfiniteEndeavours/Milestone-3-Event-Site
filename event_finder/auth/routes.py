@@ -2,39 +2,12 @@ from flask import (Blueprint, render_template,
                    request, redirect, session, flash, url_for)
 from event_finder import db
 from event_finder.event.models import User, Profile
+from event_finder.helpers import validate_password
 from werkzeug.security import generate_password_hash, check_password_hash
 from uuid import uuid4
 
 auth = Blueprint("auth", __name__,
                  template_folder="../event_finder/templates")
-
-
-# Helper Functions
-
-def validate_password(password, password_confirm):
-    """
-    Validate a user's password and password confirmation.
-
-    Args:
-        password: String representing the user's password.
-        password_confirm: String representing the user's password confirmation.
-
-    Returns:
-        - "valid" if the passwords match and also meet the criteria.
-        - "no_match" if the passwords do not match.
-        - "not_complex_enough" if the password does not
-         feature special characters.
-    """
-    # Check if passwords match and are valid
-    if password != password_confirm:
-        return "no_match"
-    if not (any(x.isupper() for x in password) and
-            any(x.islower() for x in password) and
-            any(x.isdigit() for x in password) and
-            any(x in list("!@#$%^&*()_+{}|:'<>?-=[]\\;,./`~]*")
-                for x in password)):
-        return "not_complex_enough"
-    return "valid"
 
 
 @auth.route("/register", methods=["GET", "POST"])
