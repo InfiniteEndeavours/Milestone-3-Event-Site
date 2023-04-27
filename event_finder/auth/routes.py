@@ -47,13 +47,16 @@ def register():
         is_valid, message = validate_form_data(form_data, "registration")
         if not is_valid:
             flash(message)
-            return redirect(url_for("auth.register"))
+            return redirect(url_for("auth.register", username=username,
+                                    first_name=first_name,
+                                    last_name=last_name))
 
         # Check if username is already registered
         existing_user_check = User.query.filter_by(username=username).first()
         if existing_user_check:
             flash("Username already exists. Please try again.")
-            return redirect(url_for("auth.register"))
+            return redirect(url_for("auth.register", first_name=first_name,
+                                    last_name=last_name))
 
         # Check if passwords match and are valid
         valid_password = validate_password(
@@ -64,13 +67,17 @@ def register():
         # If the password is not valid, flash an error message
         if valid_password == "no_match":
             flash("The passwords you entered do not match.")
-            return redirect(url_for('auth.register'))
+            return redirect(url_for('auth.register', username=username,
+                                    first_name=first_name,
+                                    last_name=last_name))
         elif valid_password == "not_complex_enough":
             flash(
                 "The password you have entered is not complex enough."
                 "It requires at least one uppercase, one lowercase,"
                 " one digit and a special character.")
-            return redirect(url_for('auth.register'))
+            return redirect(url_for('auth.register', username=username,
+                                    first_name=first_name,
+                                    last_name=last_name))
         elif valid_password == "valid":
             # Generates a password hash using pbkdf2:sha256 algorithm, iterates
             # 150000 times, salts with a length of 20
