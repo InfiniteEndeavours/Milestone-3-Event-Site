@@ -1,4 +1,27 @@
 from event_finder import db
+from datetime import datetime
+
+event_form_types = {
+    "title": (str, None),
+    "description": (str, None),
+    "location": (str, None),
+    "date": (datetime, "%Y-%m-%d"),
+    "start_time": (datetime, "%H:%M"),
+    "end_time": (datetime, "%H:%M")
+}
+
+registration_form_types = {
+    "username": (str, None),
+    "fname": (str, None),
+    "lname": (str, None),
+    "password": (str, None),
+    "confirm-password": (str, None),
+}
+
+login_form_types = {
+    "username": (str, None),
+    "password": (str, None)
+}
 
 
 def db_find_first(model, **kwargs):
@@ -43,3 +66,26 @@ def validate_password(password, password_confirm):
                 for x in password)):
         return "not_complex_enough"
     return "valid"
+
+
+def validate_form_data(form_data, form_type):
+    if form_type == "event":
+        required_fields = event_form_types
+    elif form_type == "registration":
+        required_fields = registration_form_types
+    elif form_type == "login":
+        required_fields = login_form_types
+    else:
+        return False, "Unknown Form"
+
+    for field_name, (field_type, field_format) in required_fields.items():
+        value = form_data.get(field_name)
+
+        if field_type == datetime:
+            try:
+                datetime.strptime(value, field_format)
+            except ValueError:
+                return False, f"Invalid format for {field_name}, got {value}, expected {field_format}"
+        elif not isinstance(value, field_type):
+            return False, f"Invalid type on {field_name}. Expected {field_type}, got {type(value)}"
+    return True, "All fields are valid"
