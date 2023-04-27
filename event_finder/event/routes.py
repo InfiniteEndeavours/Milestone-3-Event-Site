@@ -13,7 +13,8 @@ event = Blueprint("event", __name__,
 @event.route("/")
 def index():
     """
-    This route returns the index page with two random events.
+    Route returns the index page with two random events.
+
     :return:
         event_one - The first random event
         event_two - The second random event
@@ -34,7 +35,8 @@ def index():
 @event.route("/events")
 def events():
     """
-    This route returns the events page with a list of all events.
+    Route returns the events page with a list of all events.
+
     :return:
         event_list - A list of all events
         render_template("events/events.html")
@@ -49,7 +51,8 @@ def events():
 @event.route("/events/<int:event_id>")
 def event_info(event_id):
     """
-    This route returns the event info page for a specific event.
+    Route returns the event info page for a specific event.
+
     :param event_id:
     :return:
         event_data - The event data for the event
@@ -75,7 +78,8 @@ def event_info(event_id):
 @event.route("/events/create_event", methods=["GET", "POST"])
 def create_event():
     """
-    This route returns the create event page.
+     Route returns the create event page.
+
     :return:
         render_template("events/create_event.html") on GET request
         render_template("events/create_event.html") on failed POST request
@@ -130,7 +134,8 @@ def create_event():
 @event.route("/events/<int:event_id>/edit_event", methods=["GET", "POST"])
 def edit_event(event_id):
     """
-    This route returns the edit event page.
+    Route returns the edit event page.
+
     Form fields are pre-populated with the event data.
     :param event_id:
     :return:
@@ -167,7 +172,8 @@ def edit_event(event_id):
 @event.route("/events/<int:event_id>/delete")
 def delete_event(event_id):
     """
-    This route deletes an event and all associated attendance records.
+    Route deletes an event and all associated attendance records.
+
     :param event_id:
     :return:
         redirect(url_for("event.events"))
@@ -182,7 +188,8 @@ def delete_event(event_id):
 @event.route("/events/<int:event_id>/register")
 def event_registration(event_id):
     """
-    This route registers a user for an event.
+    Route registers a user for an event.
+
     Redirects user to the event info page on click.
     :param event_id:
     :return:
@@ -200,8 +207,10 @@ def event_registration(event_id):
 @event.route("/events/<int:event_id>/unregister")
 def event_deregister(event_id):
     """
-    This route deregisters a user from an event.
+     Route deregisters a user from an event.
+
     Redirects user to the event info page on click.
+
     :param event_id:
     :return:
         redirect(url_for("event.event_info", event_id=event_id))
@@ -217,7 +226,8 @@ def event_deregister(event_id):
 @event.route("/profile/<uuid>")
 def profile(uuid):
     """
-    This route returns the profile page.
+    Route returns the profile page.
+
     :param uuid:
     :return:
         user_profile - The profile data for the user
