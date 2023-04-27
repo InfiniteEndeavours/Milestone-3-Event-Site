@@ -232,7 +232,6 @@ Any colors used will be checked to ensure they pass the WebAIM Contrast AAA stan
 
 I'll also include the following:
 
-- Alt tags for images.
 - Aria labels where needed.
 - Semantic HTML.
 - Bootstraps visually hidden classes for elements are meant to only be seen by Screen Readers.
