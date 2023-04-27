@@ -343,6 +343,24 @@ This file was run after the database schema was created and only ran once at the
 
 At time of deployment, the database had all tables dropped and recreated using SQLAlchemy.
 
+#### Cloud Development
+
+While it is an option to develop using a Cloud IDE, I chose not to do this.
+
+If you wish to use one, such aas CodeAnywhere, please copy all files
+from [this](https://github.com/Code-Institute-Org/ci-full-template) repository to the current one.
+
+You can then use CodeAnywhere to create a workspace based off of this repository.
+
+You will still need to do the following:
+
+- Create a virtual environment.
+- Activate the virtual environment.
+- Install program requirements.
+- Create a `.gitignore` file and add `env.py` to it.
+- Create the env.py file in the root of your project directory.
+- Add environemnt variables from above.
+
 ### Deployment
 
 I deployed this project on Heroku, with the use of ElephantSQL for database hosting. This was done by doing the
