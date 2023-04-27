@@ -390,6 +390,15 @@ During development and testing, a number of bugs were discovered. Where a fix ha
       entries in the database.
 5. When creating or editing an event, using more than 500 characters in the description would cause an overflow error.
     - Resolved - Added a maxlength attribute to the textarea element in the form.
+6. An issue would appear where the database would attempt to create two users with the same UUID.
+    - Steps to reproduce
+        - Attempt to create a user with an invalid password
+        - Attempt to create a user with a valid password
+        - Another user then attempts to create a new account, with a valid password and is presented with an error.
+            - Duplicate Entry for Key 'user_uuid'
+    - Resolved - The issue was caused by the database having a default cell value for the uuid. When a user was created
+      the first time, the session was not emptied and the uuid was not reset. This meant that when a new user was
+      created, the uuid was already in use. To resolve this, the uuid was set to be generated on insert.
 
 ## Validation
 
