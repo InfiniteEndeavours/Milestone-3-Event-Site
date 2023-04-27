@@ -96,8 +96,10 @@ def create_event():
         description = request.form.get("description")
         location = request.form.get("location")
         date = request.form.get("date")
-        start_time = request.form.get("start_time")
-        end_time = request.form.get("end_time")
+        start_time = datetime.strptime(request.form.get("start_time"),
+                                       "%H:%M").time()
+        end_time = datetime.strptime(request.form.get("end_time"),
+                                     "%H:%M").time()
 
         form_data = request.form
         is_valid, message = validate_form_data(form_data, "event")
@@ -141,12 +143,16 @@ def edit_event(event_id):
     :return:
         event_to_edit - The event data for the event
         event_date - The event date in the format YYYY-MM-DD
+        event_start_date - The event start time in the format HH:MM
+        event_end_date - The event end time in the format HH:MM
         render_template("events/edit_event.html") on GET request
         redirect(url_for("event.events")) on POST request
 
     """
     event_to_edit = db_find_first(Event, id=event_id)
     event_date = event_to_edit.date.strftime("%Y-%m-%d")
+    event_start_date = event_to_edit.start_time.strftime("%H:%M")
+    event_end_date = event_to_edit.end_time.strftime("%H:%M")
     if request.method == "POST":
         event_to_edit.title = request.form.get("title")
         event_to_edit.description = request.form.get("description")
@@ -166,7 +172,9 @@ def edit_event(event_id):
         return redirect(url_for("event.events"))
 
     return render_template("events/edit_event.html",
-                           event=event_to_edit, event_date=event_date)
+                           event=event_to_edit, event_date=event_date,
+                           event_start_date=event_start_date,
+                           event_end_date=event_end_date)
 
 
 @event.route("/events/<int:event_id>/delete")
