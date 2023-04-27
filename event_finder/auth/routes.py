@@ -3,6 +3,7 @@ from flask import (Blueprint, render_template,
 from event_finder import db
 from event_finder.event.models import User, Profile
 from werkzeug.security import generate_password_hash, check_password_hash
+from uuid import uuid4
 
 auth = Blueprint("auth", __name__,
                  template_folder="../event_finder/templates")
@@ -12,7 +13,7 @@ auth = Blueprint("auth", __name__,
 
 def validate_password(password, password_confirm):
     """
-    Validates a user's password and password confirmation.
+    Validate a user's password and password confirmation.
 
     Args:
         password: String representing the user's password.
@@ -40,6 +41,7 @@ def validate_password(password, password_confirm):
 def register():
     """
     Route to handle requests to register a new user.
+
      Accepts both GET and POST requests.
 
     When POST request is recieved, it will process user input
@@ -97,10 +99,9 @@ def register():
                 form_password, method='pbkdf2:sha256:150000', salt_length=20)
 
         # Create a new user
-        new_user = User(username=username, password=password_hash)
+        new_user = User(username=username, password=password_hash,
+                        uuid=str(uuid4()))
         db.session.add(new_user)
-        db.session.commit()
-
         # Create a new profile
         new_profile = Profile(
             first_name=first_name,
@@ -122,7 +123,7 @@ def register():
 @auth.route("/login", methods=["GET", "POST"])
 def login():
     """
-        Logs in a user.
+    Log in a user.
 
         If a GET request is received, render the login form.
          If a POST request is received, validate user credentials
@@ -167,12 +168,12 @@ def login():
 @auth.route("/logout")
 def logout():
     """
-        Logs out a user.
+    Log out a user.
 
-        Removes the session cookies and redirects to the login page.
+    Removes the session cookies and redirects to the login page.
 
-        :returns:
-            Login.html
+    :returns:
+        Login.html
     """
     if session.keys:
         for key in list(session.keys()):
