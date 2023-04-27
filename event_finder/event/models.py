@@ -5,6 +5,8 @@ from uuid import uuid4
 
 # User Model
 class User(db.Model):
+    """User model for storing user related details."""
+
     id = db.Column(db.Integer, primary_key=True)
     # Generate a unique id for each user using uuid4 template
     uuid = db.Column(db.String(36), unique=True,
@@ -22,6 +24,8 @@ class User(db.Model):
 
 # Profile Model
 class Profile(db.Model):
+    """Profile model for storing user profile related details."""
+
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
@@ -32,6 +36,8 @@ class Profile(db.Model):
 
 # Event Model
 class Event(db.Model):
+    """Event model for storing event related details."""
+
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     description = db.Column(db.String(500), nullable=False)
@@ -49,6 +55,8 @@ class Event(db.Model):
 
 # Attendance Model
 class Attendance(db.Model):
+    """Attendance model for storing attendance related details."""
+
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     event_id = db.Column(db.Integer, db.ForeignKey('event.id'), nullable=False)
