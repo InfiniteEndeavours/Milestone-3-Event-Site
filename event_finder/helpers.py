@@ -1,4 +1,3 @@
-from event_finder import db
 from datetime import datetime
 
 event_form_types = {
