@@ -27,24 +27,36 @@ db = SQLAlchemy(app)
 
 @app.errorhandler(403)
 def forbidden(e):
+    """
+    Route returns the 403 page.
+
+    :param e:
+    :return: 403.html
+    """
     return render_template("errors/403.html"), 404
 
 
 @app.errorhandler(404)
 def page_not_found(e):
+    """
+    Route returns the 404 page.
+
+    :param e:
+    :return: 404.html
+    """
     return render_template("errors/404.html"), 403
 
 
 def create_flask_app():
     """
-        Creates a Flask application object.
+    Create a Flask application object.
 
-        This function is used to create a Flask application object and
-        register the blueprints.
+    This function is used to create a Flask application object and
+    register the blueprints.
 
-        Returns:
-            app (Flask): Flask application object
-        """
+    Returns:
+        app (Flask): Flask application object
+    """
     from event_finder.auth.routes import auth as auth_routes
     from event_finder.event.routes import event as event_routes
     from event_finder.admin.routes import admin as admin_routes
