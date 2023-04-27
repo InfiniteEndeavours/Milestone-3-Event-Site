@@ -127,7 +127,7 @@ def login():
         is_valid, message = validate_form_data(form_data, "login")
         if not is_valid:
             flash(message)
-            return redirect(url_for("auth.login"))
+            return redirect(url_for("auth.login", username=username))
 
         user = User.query.filter_by(username=username).first()
 
@@ -145,14 +145,14 @@ def login():
             else:
                 # If password doesn't match the password hash then redirect
                 flash("Incorrect Username/Password.")
-                return redirect(url_for("auth.login"))
+                return redirect(url_for("auth.login", username=username))
         else:
             # If username doesn't exist return to login page
             flash(
                 "Incorrect Username/Password."
                 "If you have forgotten your details,"
                 " please register a new account.")
-            return render_template("auth/login.html")
+            return render_template("auth/login.html", username=username)
 
     return render_template("auth/login.html")
 
