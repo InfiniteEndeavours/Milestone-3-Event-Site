@@ -22,7 +22,7 @@ def admin_page():
     """
     uuid = session.get("user_uuid")
     user = db_find_first(User, uuid=uuid)
-    if user.admin:
+    if session.get("admin") and user.admin:
         event_list = Event.query.all()
         return render_template("admin/admin.html", events=event_list)
     else:
