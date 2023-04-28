@@ -30,9 +30,7 @@ The live website can be found [here](https://ci-ms3-event-finder.herokuapp.com/)
     * [Validation](#validation)
     * [Testing User Stories](#testing-user-stories)
     * [Lighthouse](#lighthouse-testing)
-    * [Testing Methodologies](#testing-methodologies)
     * [Manual Testing](#manual-testing)
-    * [Automated Testing](#automated-testing)
 * [Credits](#credits)
 
 # User Experience
@@ -418,7 +416,8 @@ During development and testing, a number of bugs were discovered. Where a fix ha
             - Duplicate Entry for Key 'user_uuid'
     - Resolved - The issue was caused by the database having a default cell value for the uuid. When a user was created
       the first time, the session was not emptied and the uuid was not reset. This meant that when a new user was
-      created, the uuid was already in use. To resolve this, the uuid was set to be generated on insert.
+      created, the uuid was already in use. To resolve this, I set the UUID to be generated on insert in the
+      Registration route.
 
 ## Validation
 
@@ -593,5 +592,5 @@ the site worked fine, along with links to external sites in the footer. All exte
 
 ## Acknowledgements
 
-- Andrew Buncombe (Work Colleague) for advice on the Database Schema.
+- Andrew Buncombe (Colleague) for advice on the Database Schema.
 - Jack Wachira - My Code Institute Mentor for his feedback on the project.
