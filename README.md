@@ -328,7 +328,7 @@ To develop this repository locally, you will need to do the following:
    os.environ.setdefault("SECRET_KEY", "<SECRET_KEY>")
         
    # Database Connection String
-   os.environ.setdefault("DB_URI", "postgresql://user:password@hostname/database_name")```
+   os.environ.setdefault("DB_URI", "postgresql://user:password@hostname/database_name")
 
 10. Run the app.py file.
     - This can be done by using `python app.py` in the terminal.
