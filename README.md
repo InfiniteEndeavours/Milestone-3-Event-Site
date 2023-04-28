@@ -65,7 +65,7 @@ As the site designer, I want to be able to allow users to do the following:
 
 ### Individual
 
-As an individual, want to be able to:
+As an individual, I want to be able to:
 
 - View events in my area.
 - Create an account.
@@ -73,7 +73,7 @@ As an individual, want to be able to:
 
 ### Event Coordinator
 
-As an event coordinator, want to be able to:
+As an event coordinator, I want to be able to:
 
 - Create events.
 - Update events.
@@ -160,6 +160,11 @@ All pages will be responsive, for use on Mobiles, Tablets and Desktops.
     - Password
     - Password confirmation
     - Submit button
+
+#### Administration Page
+
+- Table
+    - List of Events with details and delete button
 
 ## Images
 
@@ -264,6 +269,7 @@ I will use the following libraries and frameworks:
 - Google Fonts
 - jQuery (Relied on by Bootstrap)
 - Flask
+- Flask-SQLAlchemy
 - Faker (Fake data generation for testing)
 
 For Faker, I used [this file](event_finder/event/data/fake_data_generator.py) to generate the helper functions for the
@@ -446,10 +452,10 @@ Please note, that due to the use of Font Awesome Icons, an unavoidable error is 
 
 [This folder](docs/validation/python) contains screenshots of all Python files passing Code Institutes PEP8 Linter.
 
-The code was also checked using `pycodestyle` through PyCharm, which all scripts passed.
+The code was also checked using `pycodestyle` and `pydocstyle` through PyCharm, which all scripts passed.
 
 [This](https://mariasoria.dev/en/2022-07-27-how-to-configure-a-linter-formatter-in-pycharm) guide was used to set this
-up.
+up validation.
 
 ## Testing User Stories
 
