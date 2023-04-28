@@ -9,6 +9,10 @@
         <div class="col-12 text-center">
             <a href="{{ url_for('event.create_event') }}" class="btn my-2">Add Event</a>
         </div>
+    {% else %}
+        <div class="col-12 text-center">
+            <a href="{{ url_for('auth.login') }}" class="btn my-2">Add Event</a>
+        </div>
     {% endif %}
 
 
