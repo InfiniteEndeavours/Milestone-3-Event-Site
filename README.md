@@ -600,3 +600,4 @@ the site worked fine, along with links to external sites in the footer. All exte
 
 - Andrew Buncombe (Colleague) for advice on the Database Schema.
 - Jack Wachira - My Code Institute Mentor for his feedback on the project.
+- Stephen Dawson for his feedback on the project around the styling of some elements
