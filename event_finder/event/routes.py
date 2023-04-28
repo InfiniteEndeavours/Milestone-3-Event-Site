@@ -209,7 +209,7 @@ def event_registration(event_id):
     db.session.execute(registration)
     db.session.commit()
     flash("You are now registered for this event.")
-    return redirect(url_for("event.event_info", event_id=event_id))
+    return redirect(url_for("event.events"))
 
 
 @event.route("/events/<int:event_id>/unregister")
@@ -228,7 +228,7 @@ def event_deregister(event_id):
         Attendance.user_id == user.id, Attendance.event_id == event_id))
     db.session.commit()
     flash("You are now unregistered from this event.")
-    return redirect(url_for("event.event_info", event_id=event_id))
+    return redirect(url_for("event.events"))
 
 
 @event.route("/profile/<uuid>")
